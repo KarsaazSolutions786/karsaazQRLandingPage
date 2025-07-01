@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@layer theme {
+  :root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 249, 247, 253;
+    --background-end-rgb: 255, 255, 255;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: radial-gradient(at top left, rgb(var(--background-start-rgb)), rgb(var(--background-end-rgb)));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Masonry Grid Styles */
+.my-masonry-grid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  margin-left: -12px; /* gutter size offset */
+  width: 100%;
+  box-sizing: border-box;
+}
+.my-masonry-grid_column {
+  padding-left: 12px; /* gutter size */
+  background-clip: padding-box;
+  box-sizing: border-box;
+}
