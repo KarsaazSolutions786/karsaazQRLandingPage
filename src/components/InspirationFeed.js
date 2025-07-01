@@ -113,7 +113,7 @@ export default function InspirationFeed() {
     1536: 5,
     1280: 4,
     1024: 4,
-    768: 3,
+    738: 3,
     640: 2,
   };
 
@@ -178,7 +178,7 @@ export default function InspirationFeed() {
             initial="hidden"
             animate="visible"
             exit={{ opacity: 0, transition: { duration: 0.5 } }}
-            className="absolute inset-0 pt-[60px] px-12 max-w-6xl mx-auto left-0 right-0"
+            className="absolute inset-0 pt-[60px] px-12 max-w-6xl mx-auto -left-80 right-0"
           >
             <Masonry
               breakpointCols={breakpointColumnsObj}

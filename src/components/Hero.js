@@ -79,17 +79,38 @@ export default function Hero() {
               Codes
             </p>
             <div className="mt-10">
-              <button
-                className="text-white font-bold py-4 px-10 rounded-full text-lg transform transition-transform hover:scale-105 flex items-center gap-3"
+              <div
                 style={{
-                  background: `linear-gradient(0deg, #8073E0, #8073E0),
-                    radial-gradient(65.28% 65.28% at 26.39% 20.83%, rgba(255, 255, 255, 0.413) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%),
-                    radial-gradient(92.09% 85.42% at 86.3% 87.5%, rgba(0, 0, 0, 0.23) 0%, rgba(0, 0, 0, 0) 86.18%)`,
-                  boxShadow: `3.39px 32.23px 52.58px 0px #00000033, -2.54px -3.39px 5.94px 0px #FFFFFF26 inset`,
+                  width: "150px",
+                  height: "50px",
+                  paddingLeft: 20.1,
+                  paddingRight: 20.1,
+                  paddingTop: 22.05,
+                  paddingBottom: 22.05,
+                  background:
+                    "radial-gradient(ellipse 85.59% 107.08% at 86.30% 87.50%, rgba(0, 0, 0, 0.23) 0%, rgba(0, 0, 0, 0) 86%), radial-gradient(ellipse 83.94% 83.94% at 26.39% 20.83%, rgba(255, 255, 255, 0.41) 0%, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 0) 100%), #8073E0",
+                  boxShadow:
+                    "3.3924050331115723px 32.227848052978516px 52.582279205322266px rgba(0, 0, 0, 0.20)",
+                  borderRadius: 92.44,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: 8.48,
+                  display: "inline-flex",
                 }}
               >
-                Generate QR
-              </button>
+                <div
+                  style={{
+                    color: "rgba(255, 255, 255, 0.70)",
+                    fontSize: 15.66,
+                    fontFamily: "Inter",
+                    fontWeight: "400",
+                    wordWrap: "break-word",
+                    textShadow: "1px 1px 1px rgba(0, 0, 0, 0.25)",
+                  }}
+                >
+                  Generate QR
+                </div>
+              </div>
             </div>
           </div>
 

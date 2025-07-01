@@ -25,11 +25,43 @@ body {
   display: -ms-flexbox; /* Not needed if autoprefixing */
   display: flex;
   margin-left: -12px; /* gutter size offset */
-  width: 100%;
+  width: 130%;
   box-sizing: border-box;
 }
 .my-masonry-grid_column {
   padding-left: 12px; /* gutter size */
   background-clip: padding-box;
   box-sizing: border-box;
+}
+
+/* Stair-step offsets for Masonry columns – creates a central "depth" effect */
+@media (min-width: 1536px) {
+  .my-masonry-grid_column:nth-child(1) { margin-top: 0px; }
+  .my-masonry-grid_column:nth-child(2) { margin-top: 80px; }
+  .my-masonry-grid_column:nth-child(3) { margin-top: 280px; }
+  .my-masonry-grid_column:nth-child(4) { margin-top: 80px; }
+  .my-masonry-grid_column:nth-child(5) { margin-top: 0px; }
+}
+
+@media (min-width: 1280px) and (max-width: 1535px) {
+  .my-masonry-grid_column:nth-child(1) { margin-top: 0px; }
+  .my-masonry-grid_column:nth-child(2) { margin-top: 50px; }
+  .my-masonry-grid_column:nth-child(3) { margin-top: 100px; }
+  .my-masonry-grid_column:nth-child(4) { margin-top: 50px; }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .my-masonry-grid_column:nth-child(1) { margin-top: 0px; }
+  .my-masonry-grid_column:nth-child(2) { margin-top: 40px; }
+  .my-masonry-grid_column:nth-child(3) { margin-top: 80px; }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .my-masonry-grid_column:nth-child(1) { margin-top: 0px; }
+  .my-masonry-grid_column:nth-child(2) { margin-top: 40px; }
+}
+
+@media (max-width: 767px) {
+  /* Single column – no offset needed */
+  .my-masonry-grid_column { margin-top: 0px; }
 }

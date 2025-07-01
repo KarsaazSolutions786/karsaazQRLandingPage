@@ -6,6 +6,47 @@ import { motion } from "framer-motion";
 export default function Pricing() {
   const [isYearly, setIsYearly] = useState(false);
 
+  const pillButtonStyle = {
+    width: "200px",
+    height: "50px",
+    paddingLeft: 20.1,
+    paddingRight: 20.1,
+    paddingTop: 22.05,
+    paddingBottom: 22.05,
+    background:
+      "radial-gradient(ellipse 85.59% 107.08% at 86.30% 87.50%, rgba(0, 0, 0, 0.23) 0%, rgba(0, 0, 0, 0) 86%), radial-gradient(ellipse 83.94% 83.94% at 26.39% 20.83%, rgba(255, 255, 255, 0.41) 0%, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 0) 100%), #8073E0",
+    boxShadow:
+      "3.3924050331115723px 32.227848052978516px 52.582279205322266px rgba(0, 0, 0, 0.20)",
+    borderRadius: 92.44,
+    display: "inline-flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 8.48,
+    color: "rgba(255, 255, 255, 0.70)",
+    fontSize: 15.66,
+    fontFamily: "Inter",
+    fontWeight: 400,
+    textShadow: "1px 1px 1px rgba(0, 0, 0, 0.25)",
+    border: "none",
+  };
+
+  const whitePillStyle = {
+    width: "150px",
+    height: "50px",
+    background: "#FFFFFF",
+    borderRadius: 92.44,
+    display: "inline-flex",
+    justifyContent: "center",
+    alignItems: "center",
+    fontSize: 15.66,
+    fontFamily: "Inter",
+    fontWeight: 400,
+    color: "#8073E0",
+    boxShadow:
+      "3.39px 32.23px 52.58px 0px #00000033, -2.54px -3.39px 5.94px 0px #FFFFFF26 inset",
+    border: "none",
+  };
+
   const plans = [
     {
       name: "Primary Plan",
@@ -154,7 +195,7 @@ export default function Pricing() {
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`relative rounded-3xl p-8 transition-all duration-300 ${
+              className={`relative rounded-3xl p-8 transition-all duration-300 flex flex-col items-center h-full ${
                 plan.isPopular
                   ? "text-white transform scale-105 shadow-2xl"
                   : "bg-white text-gray-800 shadow-xl hover:shadow-2xl"
@@ -183,7 +224,7 @@ export default function Pricing() {
               </div>
 
               {/* Features */}
-              <div className="space-y-4 mb-8">
+              <div className="space-y-4 mb-8 flex-1">
                 {plan.features.map((feature, featureIndex) => (
                   <div
                     key={featureIndex}
@@ -211,11 +252,8 @@ export default function Pricing() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full py-4 rounded-full font-semibold text-lg transition-all duration-300"
-                style={{
-                  ...plan.buttonStyle,
-                  border: "none",
-                }}
+                className="py-4 rounded-full font-semibold text-lg transition-all duration-300 mx-auto mt-auto"
+                style={plan.isPopular ? whitePillStyle : pillButtonStyle}
               >
                 Buy Now
               </motion.button>
