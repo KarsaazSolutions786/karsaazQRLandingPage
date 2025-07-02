@@ -160,30 +160,21 @@ export default function Pricing() {
 
           {/* Monthly/Yearly Toggle */}
           <div className="flex items-center justify-center space-x-4 mb-12">
-            <span
-              className={`text-lg font-medium ${
-                !isYearly ? "text-purple-800" : "text-purple-600"
-              }`}
-            >
-              Monthly
-            </span>
+            <span className={`text-lg font-medium `}>Monthly</span>
             <motion.button
               onClick={() => setIsYearly(!isYearly)}
-              className="relative w-16 h-8 bg-white rounded-full p-1 transition-colors duration-300"
+              className="relative w-16 h-8 rounded-full p-1 transition-colors duration-300"
+              style={{
+                background: "linear-gradient(90deg, #BB9DF3 0%, #8351E0 100%)",
+              }}
             >
               <motion.div
                 animate={{ x: isYearly ? 32 : 0 }}
                 transition={{ duration: 0.3 }}
-                className="w-6 h-6 bg-purple-600 rounded-full shadow-md"
+                className="w-6 h-6 bg-white rounded-full shadow-md"
               />
             </motion.button>
-            <span
-              className={`text-lg font-medium ${
-                isYearly ? "text-purple-800" : "text-purple-600"
-              }`}
-            >
-              Yearly
-            </span>
+            <span className={`text-lg font-medium `}>Yearly</span>
           </div>
         </motion.div>
 
@@ -195,7 +186,7 @@ export default function Pricing() {
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`relative rounded-3xl p-8 transition-all duration-300 flex flex-col items-center h-full ${
+              className={`relative rounded-3xl p-8 transition-all duration-300 flex flex-col items-start h-full ${
                 plan.isPopular
                   ? "text-white transform scale-105 shadow-2xl"
                   : "bg-white text-gray-800 shadow-xl hover:shadow-2xl"
@@ -249,14 +240,16 @@ export default function Pricing() {
               </div>
 
               {/* Buy Button */}
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="py-4 rounded-full font-semibold text-lg transition-all duration-300 mx-auto mt-auto"
-                style={plan.isPopular ? whitePillStyle : pillButtonStyle}
-              >
-                Buy Now
-              </motion.button>
+              <div className="w-full flex justify-center mt-auto">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="py-4 rounded-full font-semibold text-lg transition-all duration-300"
+                  style={plan.isPopular ? whitePillStyle : pillButtonStyle}
+                >
+                  Buy Now
+                </motion.button>
+              </div>
             </motion.div>
           ))}
         </div>

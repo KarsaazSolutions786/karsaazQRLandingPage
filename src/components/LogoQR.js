@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function LogoQR() {
   return (
-    <section className="relative py-12 px-6 overflow-hidden bg-gray-50">
+    <section className="relative py-12 px-6 overflow-hiddenr">
       <div className="max-w-7xl mx-auto">
         {/* Main Card Container */}
         <motion.div
@@ -93,8 +93,8 @@ export default function LogoQR() {
             </motion.div>
           </div>
           {/* Decorative Elements */}
-          <div className="absolute top-10 right-20 w-16 h-16 bg-white/10 rounded-full blur-xl"></div>
-          <div className="absolute bottom-10 left-20 w-24 h-24 bg-pink-300/20 rounded-full blur-2xl"></div>
+          {/* <div className="absolute top-10 right-20 w-16 h-16 bg-white/10 rounded-full blur-xl"></div> */}
+          {/* <div className="absolute bottom-10 left-20 w-24 h-24 bg-pink-300/20 rounded-full blur-2xl"></div> */}
         </motion.div>
       </div>
     </section>

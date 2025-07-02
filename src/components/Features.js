@@ -1,9 +1,10 @@
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const FeatureCard = ({ title, description, imageSrc }) => {
   return (
-    <div className="bg-white border border-gray-200 rounded-3xl p-6 flex flex-col items-center text-center shadow-lg transition-all hover:shadow-purple-200 hover:-translate-y-1">
+    <div className="bg-white border border-purple-100 rounded-3xl p-0 flex flex-col items-center shadow-lg transition-all hover:shadow-purple-200 hover:-translate-y-1">
       <div className="w-full h-48 mb-6 flex items-center justify-center overflow-hidden">
         {imageSrc ? (
           <Image
@@ -11,7 +12,7 @@ const FeatureCard = ({ title, description, imageSrc }) => {
             alt={title}
             width={200}
             height={200}
-            className="object-contain w-full h-full"
+            className="object-contain w-full h-full p-2"
           />
         ) : (
           <svg
@@ -29,8 +30,13 @@ const FeatureCard = ({ title, description, imageSrc }) => {
           </svg>
         )}
       </div>
-      <h3 className="text-xl font-bold text-gray-800 mb-2">{title}</h3>
-      <p className="text-gray-600">{description}</p>
+      <div className="w-full border-t border-gray-200"></div>
+      <div className="w-full pt-4 p-5">
+        <h3 className="text-xl font-bold text-gray-800 mb-2 text-left">
+          {title}
+        </h3>
+        <p className="text-gray-600 text-left">{description}</p>
+      </div>
     </div>
   );
 };
@@ -48,43 +54,160 @@ const PlaceholderIllustration = (props) => (
   </svg>
 );
 
-export default function Features() {
-  const featuresData = [
-    {
-      title: "Easy Payments",
-      description: "Scan to pay with any device, anytime.",
-      imageSrc: "/img/image.png",
-    },
-    {
-      title: "Connect Instantly",
-      description: "Share contact details or social profiles seamlessly.",
-      imageSrc: "/img/image1.png",
-    },
-    {
-      title: "Digital Information",
-      description: "Access menus, guides, and more with a simple scan.",
-      imageSrc: "/img/image2.png",
-    },
-    {
-      title: "Product Details",
-      description: "Get instant information about products and inventory.",
-      imageSrc: "/img/image3.png",
-    },
-  ];
+// Create a pool of all possible features
+const allFeatures = [
+  {
+    title: "Easy Payments",
+    description: "Scan to pay with any device, anytime.",
+    imageSrc: "/img/image.png",
+  },
+  {
+    title: "Connect Instantly",
+    description: "Share contact details or social profiles seamlessly.",
+    imageSrc: "/img/image1.png",
+  },
+  {
+    title: "Digital Information",
+    description: "Access menus, guides, and more with a simple scan.",
+    imageSrc: "/img/image2.png",
+  },
+  {
+    title: "Product Details",
+    description: "Get instant information about products and inventory.",
+    imageSrc: "/img/image3.png",
+  },
+  {
+    title: "Document Sharing",
+    description: "Share PDFs, files, and documents instantly.",
+    imageSrc: "/img/image.png",
+  },
+  {
+    title: "Website Access",
+    description: "Direct visitors to your website with one scan.",
+    imageSrc: "/img/image1.png",
+  },
+  {
+    title: "App Downloads",
+    description: "Guide users to download your mobile app easily.",
+    imageSrc: "/img/image2.png",
+  },
+  {
+    title: "Event Management",
+    description: "Share event details and calendar invites.",
+    imageSrc: "/img/image3.png",
+  },
+  {
+    title: "Media Sharing",
+    description: "Share images, videos, and audio files.",
+    imageSrc: "/img/image.png",
+  },
+  {
+    title: "Audio Content",
+    description: "Play music, podcasts, or audio messages.",
+    imageSrc: "/img/image1.png",
+  },
+  {
+    title: "Special Offers",
+    description: "Share coupons and promotional codes.",
+    imageSrc: "/img/image2.png",
+  },
+  {
+    title: "Social Media",
+    description: "Connect to all your social media profiles.",
+    imageSrc: "/img/image3.png",
+  },
+];
+
+// Function to shuffle and select features based on activeType
+const getFeaturesByType = (activeType) => {
+  // Create a deterministic shuffle based on activeType
+  const shuffleArray = (array, seed) => {
+    const newArray = [...array];
+    let currentIndex = newArray.length;
+    let temporaryValue, randomIndex;
+
+    // Simple seeded random function
+    const seededRandom = (seed) => {
+      const x = Math.sin(seed) * 10000;
+      return x - Math.floor(x);
+    };
+
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(
+        seededRandom(seed + currentIndex) * currentIndex
+      );
+      currentIndex -= 1;
+      temporaryValue = newArray[currentIndex];
+      newArray[currentIndex] = newArray[randomIndex];
+      newArray[randomIndex] = temporaryValue;
+      seed++;
+    }
+    return newArray;
+  };
+
+  // Create a seed based on activeType
+  const typeSeeds = {
+    PDF: 1,
+    Link: 2,
+    Apps: 3,
+    Event: 4,
+    Image: 5,
+    Audio: 6,
+    Coupon: 7,
+    Website: 8,
+  };
+
+  const seed = typeSeeds[activeType] || 1;
+  const shuffled = shuffleArray(allFeatures, seed);
+
+  // Return first 4 features from the shuffled array
+  return shuffled.slice(0, 4);
+};
+
+export default function Features({ activeType = "PDF" }) {
+  const featuresData = getFeaturesByType(activeType);
 
   return (
     <section className="py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <motion.div
+          key={activeType}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.2,
+              },
+            },
+          }}
+        >
           {featuresData.map((feature, index) => (
-            <FeatureCard
-              key={index}
-              title={feature.title}
-              description={feature.description}
-              imageSrc={feature.imageSrc}
-            />
+            <motion.div
+              key={`${activeType}-${index}`}
+              variants={{
+                hidden: { opacity: 0, y: 50 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    duration: 0.6,
+                    ease: "easeOut",
+                  },
+                },
+              }}
+            >
+              <FeatureCard
+                title={feature.title}
+                description={feature.description}
+                imageSrc={feature.imageSrc}
+              />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Masonry from "react-masonry-css";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 
 const inspirationalPhrases = [
   {
@@ -41,7 +40,7 @@ const imagesByTab = {
   ],
 };
 
-const generateImages = (tabIndex, count = 24) => {
+const generateImages = (tabIndex, count = 18) => {
   // Create varied heights for masonry effect but with consistent width
   const heightVariations = [280, 320, 360, 240, 300, 340, 260, 380, 290, 330];
   const tabImages = imagesByTab[tabIndex] || imagesByTab[0];
@@ -56,6 +55,7 @@ const generateImages = (tabIndex, count = 24) => {
       height: height, // Varied heights for masonry effect
       span: 1,
       id: `img-${Date.now()}-${i}`,
+      rotation: Math.random() * 6 - 3, // Random rotation for Pinterest effect
     };
   });
 };
@@ -76,7 +76,12 @@ export default function InspirationFeed() {
 
   useEffect(() => {
     // Pre-load initial images on mount
-    setImages(generateImages(0));
+    const initialImages = generateImages(0);
+    console.log(
+      "Generated images:",
+      initialImages.map((img) => img.src)
+    );
+    setImages(initialImages);
 
     const interval = setInterval(() => {
       setPhraseIndex(
@@ -106,15 +111,6 @@ export default function InspirationFeed() {
     hidden: { y: 20, opacity: 0 },
     visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
     exit: { y: -20, opacity: 0, transition: { duration: 0.5 } },
-  };
-
-  const imageContainerVariants = {
-    visible: { transition: { staggerChildren: 0.05 } },
-  };
-
-  const imageVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
   return (
@@ -159,10 +155,24 @@ export default function InspirationFeed() {
         <AnimatePresence>
           <motion.div
             key={phraseIndex}
-            variants={imageContainerVariants}
-            initial="hidden"
-            animate="visible"
-            exit={{ opacity: 0, transition: { duration: 0.5 } }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{
+              opacity: 0,
+              scale: 0.95,
+              transition: {
+                duration: 0.4,
+                ease: "easeInOut",
+              },
+            }}
+            transition={{
+              duration: 0.8,
+              ease: "easeOut",
+              scale: {
+                duration: 0.6,
+                ease: "easeOut",
+              },
+            }}
             className="absolute inset-0 pt-[60px] px-12 max-w-5xl mx-auto -left-65 right-0"
           >
             <Masonry
@@ -170,27 +180,84 @@ export default function InspirationFeed() {
               className="my-masonry-grid"
               columnClassName="my-masonry-grid_column"
             >
-              {images.map((image) => (
+              {images.map((image, index) => (
                 <motion.div
                   key={image.id}
-                  variants={imageVariants}
-                  className="mb-3 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer"
+                  initial={{
+                    opacity: 0,
+                    y: -80, // Higher initial position for more dramatic drop
+                    scale: 0.6, // Start even smaller for more dramatic effect
+                    rotateZ: image.rotation,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    rotateZ: 0,
+                  }}
+                  transition={{
+                    type: "spring",
+                    damping: 20, // Less damping for more bounce
+                    stiffness: 100, // Lower stiffness for more natural movement
+                    mass: 0.8, // Add mass for more realistic physics
+                    duration: 1.2, // Longer duration for more elegant movement
+                    delay: (index % 5) * 0.12 + Math.floor(index / 5) * 0.05, // Pinterest-style column-based stagger
+                    opacity: {
+                      duration: 0.6,
+                      delay: (index % 5) * 0.12 + Math.floor(index / 5) * 0.05,
+                      ease: "easeOut",
+                    },
+                  }}
+                  className="mb-3 rounded-2xl overflow-hidden shadow-lg group cursor-pointer"
                   style={{
                     boxShadow:
-                      "0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08)",
+                      "0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04)",
+                  }}
+                  whileHover={{
+                    scale: 1.02, // Subtle scale like Pinterest
+                    y: -12, // Lift effect
+                    boxShadow:
+                      "0 25px 50px rgba(0, 0, 0, 0.15), 0 10px 20px rgba(0, 0, 0, 0.1)", // Enhanced shadow
+                    transition: {
+                      type: "spring",
+                      damping: 25,
+                      stiffness: 400,
+                      mass: 0.5,
+                    },
+                  }}
+                  whileTap={{
+                    scale: 0.98,
+                    transition: { duration: 0.1 },
                   }}
                 >
                   <div
-                    className="w-full"
+                    className="w-full relative overflow-hidden rounded-2xl"
                     style={{ height: `${image.height}px` }}
                   >
-                    <Image
+                    <img
                       src={image.src}
                       alt="QR Code inspiration image"
-                      width={236}
-                      height={image.height}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                      loading="lazy"
+                      style={{
+                        backgroundColor: "#f3f4f6", // Gray background while loading
+                        minHeight: "200px", // Prevent layout shift
+                      }}
+                      onLoad={(e) => {
+                        e.target.style.backgroundColor = "transparent";
+                      }}
+                      onError={(e) => {
+                        console.log("Image failed to load:", image.src);
+                        e.target.style.backgroundColor = "#f3f4f6";
+                        e.target.style.display = "flex";
+                        e.target.style.alignItems = "center";
+                        e.target.style.justifyContent = "center";
+                        e.target.innerHTML =
+                          '<div style="color: #6b7280; font-size: 14px; text-align: center; padding: 20px;">Loading...</div>';
+                      }}
                     />
+                    {/* Pinterest-style overlay on hover */}
+                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 rounded-2xl" />
                   </div>
                 </motion.div>
               ))}

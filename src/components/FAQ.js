@@ -37,520 +37,85 @@ export default function FAQ() {
     setOpenIndex(openIndex === index ? -1 : index);
   };
 
+  const PlusIcon = () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path
+        d="M12 6V18M6 12H18"
+        stroke="#666"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+
+  const MinusIcon = () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M6 12H18" stroke="#666" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+
   return (
     <section className="py-16 px-6 bg-white">
       <div className="max-w-[1400px] mx-auto">
-        {/* Header - Centered */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-          style={{
-            color: "#B048B0",
-            fontSize: "40px",
-            fontFamily: "Inter, sans-serif",
-            fontWeight: "400",
-            textTransform: "capitalize",
-            lineHeight: "60px",
-            wordWrap: "break-word",
-          }}
+          className="text-center mb-12"
         >
-          Frequently Ask Questions
+          <h2 className="text-4xl font-normal text-purple-600 mb-4">
+            Frequently Ask Questions
+          </h2>
         </motion.div>
 
-        {/* FAQ Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-[1350px] mx-auto">
-          {/* Left Column */}
-          <div className="space-y-8">
-            {/* First FAQ - Can expand */}
+        {/* FAQ Grid */}
+        <div className="flex flex-wrap justify-center gap-6 items-start max-w-[1400px] mx-auto">
+          {faqs.map((faq, index) => (
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="cursor-pointer transition-all duration-300 hover:scale-[1.02] relative"
-              style={{
-                background: openIndex === 0 ? "#F6F4FF" : "white",
-                boxShadow: "0px 4px 4px #D7D9EB",
-                borderRadius: "27.34px",
-                padding: "40px 50px",
-                minHeight: "100px",
-              }}
-              onClick={() => toggleFAQ(0)}
+              key={faq.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              layout={false}
+              className={`w-full sm:w-[644.93px] ${
+                openIndex === index
+                  ? "h-auto min-h-56 bg-violet-50"
+                  : "h-24 bg-white"
+              } rounded-3xl shadow-[0px_4px_4px_0px_rgba(215,217,235,1.00)] shadow-[0px_-4px_11px_0px_rgba(241,241,243,1.00)] shadow-[inset_0px_1px_4px_0px_rgba(101,108,148,0.25)] shadow-[inset_0px_-2px_4px_0px_rgba(101,108,148,0.25)] overflow-hidden cursor-pointer transition-all duration-300 flex-shrink-0`}
+              onClick={() => toggleFAQ(index)}
             >
-              {/* Icon */}
-              <div
-                className="absolute left-12 top-12"
-                style={{ width: "24px", height: "24px" }}
-              >
-                {openIndex === 0 ? (
-                  // Minus Icon
-                  <motion.div
-                    initial={{ rotate: 90 }}
-                    animate={{ rotate: 0 }}
-                    transition={{ duration: 0.3 }}
-                    style={{
-                      width: "24px",
-                      height: "3px",
-                      background: "black",
-                      borderRadius: "20px",
-                      opacity: 0.8,
-                    }}
-                  />
-                ) : (
-                  // Plus Icon
-                  <div className="relative">
-                    <div
-                      style={{
-                        width: "20px",
-                        height: "3px",
-                        background: "#1B1139",
-                        borderRadius: "20px",
-                        opacity: 0.8,
-                      }}
-                    />
-                    <div
-                      style={{
-                        width: "3px",
-                        height: "20px",
-                        background: "#1B1139",
-                        borderRadius: "20px",
-                        opacity: 0.8,
-                        position: "absolute",
-                        top: "-8.5px",
-                        left: "8.5px",
-                      }}
-                    />
+              <div className="p-6">
+                {/* Question Header */}
+                <div className="flex items-center justify-between">
+                  <h3 className="text-lg font-semibold text-gray-800 pr-4 flex-1">
+                    {faq.question}
+                  </h3>
+                  <div className="flex-shrink-0">
+                    {openIndex === index ? <MinusIcon /> : <PlusIcon />}
                   </div>
-                )}
-              </div>
-
-              {/* Question */}
-              <div
-                className="mb-4"
-                style={{
-                  marginLeft: "60px",
-                  opacity: 0.88,
-                  color: "#1B1139",
-                  fontSize: "18px",
-                  fontFamily: "Inter, sans-serif",
-                  fontWeight: "600",
-                  lineHeight: "23.40px",
-                  wordWrap: "break-word",
-                }}
-              >
-                {faqs[0].question}
-              </div>
-
-              {/* Answer */}
-              <AnimatePresence>
-                {openIndex === 0 && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 0.7, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
-                    className="overflow-hidden"
-                    style={{
-                      marginLeft: "60px",
-                      color: "#363049",
-                      fontSize: "14px",
-                      fontFamily: "Inter, sans-serif",
-                      fontWeight: "400",
-                      lineHeight: "21.10px",
-                      letterSpacing: "0.10px",
-                      wordWrap: "break-word",
-                      paddingTop: "10px",
-                    }}
-                  >
-                    {faqs[0].answer}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-
-            {/* Fourth FAQ - Can expand */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="cursor-pointer transition-all duration-300 hover:scale-[1.02] relative"
-              style={{
-                background: openIndex === 3 ? "#F6F4FF" : "white",
-                boxShadow: "0px 4px 4px #D7D9EB",
-                borderRadius: "27.34px",
-                padding: "40px 50px",
-                minHeight: "100px",
-              }}
-              onClick={() => toggleFAQ(3)}
-            >
-              {/* Icon */}
-              <div
-                className="absolute left-12 top-12"
-                style={{ width: "24px", height: "24px" }}
-              >
-                {openIndex === 3 ? (
-                  // Minus Icon
-                  <motion.div
-                    initial={{ rotate: 90 }}
-                    animate={{ rotate: 0 }}
-                    transition={{ duration: 0.3 }}
-                    style={{
-                      width: "24px",
-                      height: "3px",
-                      background: "black",
-                      borderRadius: "20px",
-                      opacity: 0.8,
-                    }}
-                  />
-                ) : (
-                  // Plus Icon
-                  <div className="relative">
-                    <div
-                      style={{
-                        width: "20px",
-                        height: "3px",
-                        background: "#1B1139",
-                        borderRadius: "20px",
-                        opacity: 0.8,
-                      }}
-                    />
-                    <div
-                      style={{
-                        width: "3px",
-                        height: "20px",
-                        background: "#1B1139",
-                        borderRadius: "20px",
-                        opacity: 0.8,
-                        position: "absolute",
-                        top: "-8.5px",
-                        left: "8.5px",
-                      }}
-                    />
-                  </div>
-                )}
-              </div>
-
-              {/* Question */}
-              <div
-                className="mb-4"
-                style={{
-                  marginLeft: "60px",
-                  opacity: 0.88,
-                  color: "#1B1139",
-                  fontSize: "18px",
-                  fontFamily: "Inter, sans-serif",
-                  fontWeight: "600",
-                  lineHeight: "23.40px",
-                  wordWrap: "break-word",
-                }}
-              >
-                {faqs[3].question}
-              </div>
-
-              {/* Answer */}
-              <AnimatePresence>
-                {openIndex === 3 && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 0.7, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
-                    className="overflow-hidden"
-                    style={{
-                      marginLeft: "60px",
-                      color: "#363049",
-                      fontSize: "14px",
-                      fontFamily: "Inter, sans-serif",
-                      fontWeight: "400",
-                      lineHeight: "21.10px",
-                      letterSpacing: "0.10px",
-                      wordWrap: "break-word",
-                      paddingTop: "10px",
-                    }}
-                  >
-                    {faqs[3].answer}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          </div>
-
-          {/* Right Column */}
-          <div className="space-y-8">
-            {/* Second FAQ - Can expand */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="cursor-pointer transition-all duration-300 hover:scale-[1.02] relative"
-              style={{
-                background: openIndex === 1 ? "#F6F4FF" : "white",
-                boxShadow: "0px 4px 4px #D7D9EB",
-                borderRadius: "27.34px",
-                padding: "40px 50px",
-                minHeight: "100px",
-              }}
-              onClick={() => toggleFAQ(1)}
-            >
-              {/* Icon */}
-              <div
-                className="absolute left-12 top-12"
-                style={{ width: "24px", height: "24px" }}
-              >
-                {openIndex === 1 ? (
-                  // Minus Icon
-                  <motion.div
-                    initial={{ rotate: 90 }}
-                    animate={{ rotate: 0 }}
-                    transition={{ duration: 0.3 }}
-                    style={{
-                      width: "24px",
-                      height: "3px",
-                      background: "black",
-                      borderRadius: "20px",
-                      opacity: 0.8,
-                    }}
-                  />
-                ) : (
-                  // Plus Icon
-                  <div className="relative">
-                    <div
-                      style={{
-                        width: "20px",
-                        height: "3px",
-                        background: "#1B1139",
-                        borderRadius: "20px",
-                        opacity: 0.8,
-                      }}
-                    />
-                    <div
-                      style={{
-                        width: "3px",
-                        height: "20px",
-                        background: "#1B1139",
-                        borderRadius: "20px",
-                        opacity: 0.8,
-                        position: "absolute",
-                        top: "-8.5px",
-                        left: "8.5px",
-                      }}
-                    />
-                  </div>
-                )}
-              </div>
-
-              {/* Question */}
-              <div
-                className="mb-4"
-                style={{
-                  marginLeft: "60px",
-                  opacity: 0.88,
-                  color: "#1B1139",
-                  fontSize: "18px",
-                  fontFamily: "Inter, sans-serif",
-                  fontWeight: "600",
-                  lineHeight: "23.40px",
-                  wordWrap: "break-word",
-                }}
-              >
-                {faqs[1].question}
-              </div>
-
-              {/* Answer */}
-              <AnimatePresence>
-                {openIndex === 1 && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 0.7, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
-                    className="overflow-hidden"
-                    style={{
-                      marginLeft: "60px",
-                      color: "#363049",
-                      fontSize: "14px",
-                      fontFamily: "Inter, sans-serif",
-                      fontWeight: "400",
-                      lineHeight: "21.10px",
-                      letterSpacing: "0.10px",
-                      wordWrap: "break-word",
-                      paddingTop: "10px",
-                    }}
-                  >
-                    {faqs[1].answer}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-
-            {/* Third FAQ - Can expand */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="cursor-pointer transition-all duration-300 hover:scale-[1.02] relative"
-              style={{
-                background: openIndex === 2 ? "#F6F4FF" : "white",
-                boxShadow: "0px 4px 4px #D7D9EB",
-                borderRadius: "27.34px",
-                padding: "40px 50px",
-                minHeight: "100px",
-              }}
-              onClick={() => toggleFAQ(2)}
-            >
-              {/* Icon */}
-              <div
-                className="absolute left-12 top-12"
-                style={{ width: "24px", height: "24px" }}
-              >
-                {openIndex === 2 ? (
-                  // Minus Icon
-                  <motion.div
-                    initial={{ rotate: 90 }}
-                    animate={{ rotate: 0 }}
-                    transition={{ duration: 0.3 }}
-                    style={{
-                      width: "24px",
-                      height: "3px",
-                      background: "black",
-                      borderRadius: "20px",
-                      opacity: 0.8,
-                    }}
-                  />
-                ) : (
-                  // Plus Icon
-                  <div className="relative">
-                    <div
-                      style={{
-                        width: "20px",
-                        height: "3px",
-                        background: "#1B1139",
-                        borderRadius: "20px",
-                        opacity: 0.8,
-                      }}
-                    />
-                    <div
-                      style={{
-                        width: "3px",
-                        height: "20px",
-                        background: "#1B1139",
-                        borderRadius: "20px",
-                        opacity: 0.8,
-                        position: "absolute",
-                        top: "-8.5px",
-                        left: "8.5px",
-                      }}
-                    />
-                  </div>
-                )}
-              </div>
-
-              {/* Question */}
-              <div
-                className="mb-4"
-                style={{
-                  marginLeft: "60px",
-                  opacity: 0.88,
-                  color: "#1B1139",
-                  fontSize: "18px",
-                  fontFamily: "Inter, sans-serif",
-                  fontWeight: "600",
-                  lineHeight: "23.40px",
-                  wordWrap: "break-word",
-                }}
-              >
-                {faqs[2].question}
-              </div>
-
-              {/* Answer */}
-              <AnimatePresence>
-                {openIndex === 2 && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 0.7, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
-                    className="overflow-hidden"
-                    style={{
-                      marginLeft: "60px",
-                      color: "#363049",
-                      fontSize: "14px",
-                      fontFamily: "Inter, sans-serif",
-                      fontWeight: "400",
-                      lineHeight: "21.10px",
-                      letterSpacing: "0.10px",
-                      wordWrap: "break-word",
-                      paddingTop: "10px",
-                    }}
-                  >
-                    {faqs[2].answer}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-
-            {/* Fifth FAQ - Static (no expand) */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="relative"
-              style={{
-                background: "white",
-                boxShadow: "0px 4px 4px #D7D9EB",
-                borderRadius: "27.34px",
-                padding: "40px 50px",
-                minHeight: "100px",
-              }}
-            >
-              {/* Plus Icon */}
-              <div
-                className="absolute left-12 top-12"
-                style={{ width: "24px", height: "24px" }}
-              >
-                <div className="relative">
-                  <div
-                    style={{
-                      width: "20px",
-                      height: "3px",
-                      background: "#1B1139",
-                      borderRadius: "20px",
-                      opacity: 0.8,
-                    }}
-                  />
-                  <div
-                    style={{
-                      width: "3px",
-                      height: "20px",
-                      background: "#1B1139",
-                      borderRadius: "20px",
-                      opacity: 0.8,
-                      position: "absolute",
-                      top: "-8.5px",
-                      left: "8.5px",
-                    }}
-                  />
                 </div>
-              </div>
 
-              {/* Question */}
-              <div
-                style={{
-                  marginLeft: "60px",
-                  opacity: 0.88,
-                  color: "#1B1139",
-                  fontSize: "18px",
-                  fontFamily: "Inter, sans-serif",
-                  fontWeight: "600",
-                  lineHeight: "23.40px",
-                  wordWrap: "break-word",
-                }}
-              >
-                How long until we deliver your first blog post?
+                {/* Answer */}
+                <AnimatePresence>
+                  {openIndex === index && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                      layout={false}
+                    >
+                      <div className="pt-4 text-gray-600 text-sm leading-relaxed">
+                        {faq.answer}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </motion.div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

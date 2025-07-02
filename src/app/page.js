@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
 import HowItWorks from "@/components/HowItWorks";
@@ -7,10 +10,12 @@ import FAQ from "@/components/FAQ";
 import Pricing from "@/components/Pricing";
 
 export default function Home() {
+  const [activeType, setActiveType] = useState("PDF");
+
   return (
     <main>
-      <Hero />
-      <Features />
+      <Hero activeType={activeType} setActiveType={setActiveType} />
+      <Features activeType={activeType} />
       <HowItWorks />
       <InspirationFeed />
       <LogoQR />

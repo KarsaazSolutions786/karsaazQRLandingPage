@@ -1,21 +1,18 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 
 const ActiveBorder = () => (
   <Image
     src="/img/Group 1000004911.png"
     alt="Active item border"
-    width={96}
-    height={96}
-    className="absolute inset-0 w-full h-full object-contain top-3"
+    width={130}
+    height={130}
+    className="absolute top-1 inset-0  object-contain z-10"
   />
 );
 
-export default function Hero() {
-  const [activeType, setActiveType] = useState("PDF");
-
+export default function Hero({ activeType, setActiveType }) {
   const qrTypes = [
     { name: "PDF", icon: "file" },
     { name: "Link", icon: "link" },
@@ -150,7 +147,7 @@ export default function Hero() {
 
       {/* QR Types Carousel Section */}
       <div className="pb-1">
-        <div className="max-w-4xl mx-auto p-4 bg-white/70 backdrop-blur-md rounded-[102.49px] shadow-lg">
+        <div className="max-w-4xl mx-auto p-6 bg-white/70 backdrop-blur-md rounded-[102.49px] shadow-lg">
           <div className="relative">
             <div className="flex items-center justify-between">
               <button className="rounded-full text-purple-600 hover:bg-purple-100/50 transition-colors">
@@ -169,30 +166,21 @@ export default function Hero() {
                 </svg>
               </button>
               <div className="flex-1 overflow-hidden">
-                <div className="flex justify-center items-center -space-x-4">
+                <div className="flex justify-center items-center space-x-2">
                   {qrTypes.map((type) => (
                     <div
                       key={type.name}
                       onClick={() => setActiveType(type.name)}
-                      className="flex flex-col items-center space-y-0 text-center cursor-pointer group"
+                      className="flex flex-col items-center space-y-2 text-center cursor-pointer group min-w-0 flex-shrink-0"
                     >
-                      <div
-                        className={`relative w-24 h-24 rounded-2xl flex items-center justify-center transition-all duration-300
-                         `}
-                      >
+                      <div className="relative">
                         {activeType === type.name && <ActiveBorder />}
                         <div
-                          className="w-16 h-16 flex items-center justify-center transition-all duration-300"
-                          style={{
-                            background: "white",
-                            boxShadow:
-                              "3.7074687480926514px 3.7074687480926514px 9.639418601989746px rgba(230, 230, 230, 0.90)",
-                            borderRadius: 11.5,
-                            border:
-                              activeType === type.name
-                                ? "none"
-                                : "1px #C9CCD0 solid",
-                          }}
+                          className={`w-20 h-20 flex items-center justify-center transition-opacity duration-300 bg-white rounded-3xl shadow-[3.7074687480926514px_3.7074687480926514px_9.639418601989746px_0px_rgba(230,230,230,0.90)] shadow-[-3.7074687480926514px_-3.7074687480926514px_7.414937496185303px_0px_rgba(255,255,255,0.90)] shadow-[3.7074687480926514px_-3.7074687480926514px_7.414937496185303px_0px_rgba(230,230,230,0.20)] shadow-[-3.7074687480926514px_3.7074687480926514px_7.414937496185303px_0px_rgba(230,230,230,0.20)] shadow-[inset_-0.7414937615394592px_-0.7414937615394592px_1.4829875230789185px_0px_rgba(186,186,211,0.30)] shadow-[inset_0.7414937615394592px_0.7414937615394592px_1.4829875230789185px_0px_rgba(208,208,223,0.30)] ${
+                            activeType === type.name
+                              ? "opacity-100"
+                              : "opacity-40 border border-neutral-300"
+                          }`}
                         >
                           <Icon
                             type={type.icon}
@@ -200,7 +188,11 @@ export default function Hero() {
                           />
                         </div>
                       </div>
-                      <p className={`text-sm font-medium transition-colors `}>
+                      <p
+                        className={`text-xs font-medium transition-colors text-gray-700 ${
+                          activeType === type.name ? "text-purple-600" : ""
+                        }`}
+                      >
                         {type.name}
                       </p>
                     </div>
@@ -251,13 +243,13 @@ const Icon = ({ type, isActive }) => {
       <Image
         src={iconSrc}
         alt={`${type} icon`}
-        width={52}
-        height={52}
+        width={40}
+        height={40}
         className="object-contain"
         style={{
           filter: isActive
             ? "brightness(0) saturate(100%) invert(36%) sepia(88%) saturate(2298%) hue-rotate(258deg) brightness(92%) contrast(92%)" // #7E4CDE active color filter
-            : "brightness(0) saturate(100%) invert(20%) sepia(8%) saturate(1500%) hue-rotate(169deg) brightness(96%) contrast(96%)", // Darker #36454F default color filter
+            : "brightness(0) saturate(100%)", // Pure black color for inactive icons
         }}
       />
     </div>
