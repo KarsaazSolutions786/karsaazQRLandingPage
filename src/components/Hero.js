@@ -150,7 +150,7 @@ export default function Hero() {
 
       {/* QR Types Carousel Section */}
       <div className="pb-1">
-        <div className="max-w-4xl mx-auto p-8 bg-white/70 backdrop-blur-md rounded-[102.49px] shadow-lg">
+        <div className="max-w-4xl mx-auto p-4 bg-white/70 backdrop-blur-md rounded-[102.49px] shadow-lg">
           <div className="relative">
             <div className="flex items-center justify-between">
               <button className="rounded-full text-purple-600 hover:bg-purple-100/50 transition-colors">

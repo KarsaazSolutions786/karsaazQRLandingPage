@@ -77,8 +77,7 @@ export default function LogoQR() {
                   type: "spring",
                   stiffness: 100,
                 }}
-                whileHover={{ scale: 1.05 }}
-                className="cursor-pointer"
+                className=""
               >
                 <div className=" p-6 rounded-2xl transition-all duration-300">
                   <div className="w-[148px] h-[148px]relative">
@@ -92,7 +91,7 @@ export default function LogoQR() {
                 </div>
               </motion.div>
             </motion.div>
-          </div> 
+          </div>
           {/* Decorative Elements */}
           <div className="absolute top-10 right-20 w-16 h-16 bg-white/10 rounded-full blur-xl"></div>
           <div className="absolute bottom-10 left-20 w-24 h-24 bg-pink-300/20 rounded-full blur-2xl"></div>

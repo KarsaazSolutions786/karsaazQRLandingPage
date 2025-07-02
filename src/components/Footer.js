@@ -101,27 +101,27 @@ export default function Footer() {
                 Subscribe to our Newsletter
               </h3>
               <form onSubmit={handleSubscribe} className="relative max-w-md">
-                <div
-                  className="flex items-center bg-white rounded-full overflow-hidden shadow-lg"
-                  style={{ background: "#F3F3F7" }}
-                >
+                <div className="flex items-center overflow-hidden shadow-lg rounded-lg bg-white">
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your Email"
-                    className="flex-1 px-6 py-4 bg-transparent border-none focus:outline-none focus:ring-0 text-gray-600"
-                    style={{ background: "transparent" }}
+                    className="w-full h-14 bg-violet-50 border border-gray-300 rounded-lg pl-4 pr-16 mt-[0.5px]"
                     required
                   />
                   <button
                     type="submit"
-                    className="text-white font-semibold px-8 py-4 rounded-full transition-all"
+                    className="absolute right-0 top-0 text-white font-semibold px-8 py-4 rounded-lg transition-all"
                     style={{
-                      background: `linear-gradient(0deg, #8073E0, #8073E0),
-                        radial-gradient(65.28% 65.28% at 26.39% 20.83%, rgba(255, 255, 255, 0.413) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%),
-                        radial-gradient(92.09% 85.42% at 86.3% 87.5%, rgba(0, 0, 0, 0.23) 0%, rgba(0, 0, 0, 0) 86.18%)`,
-                      boxShadow: `3.39px 32.23px 52.58px 0px #00000033, -2.54px -3.39px 5.94px 0px #FFFFFF26 inset`,
+                      background:
+                        "radial-gradient(ellipse 85.59% 107.08% at 86.30% 87.50%, rgba(0, 0, 0, 0.23) 0%, rgba(0, 0, 0, 0) 86%), radial-gradient(ellipse 83.94% 83.94% at 26.39% 20.83%, rgba(255, 255, 255, 0.41) 0%, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 0) 100%), #8073E0",
+                      boxShadow: "3.39px 32.23px 52.58px rgba(0, 0, 0, 0.2)",
+                      borderRadius: "10.44px",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      gap: "8.48px",
                     }}
                   >
                     Subscribe

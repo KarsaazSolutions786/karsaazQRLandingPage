@@ -39,7 +39,7 @@ export default function FAQ() {
 
   return (
     <section className="py-16 px-6 bg-white">
-      <div className="max-w-[1250px] mx-auto">
+      <div className="max-w-[1400px] mx-auto">
         {/* Header - Centered */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -47,20 +47,16 @@ export default function FAQ() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
           style={{
-            background:
-              "linear-gradient(90.77deg, #B048B0 9.76%, #A550B9 31.16%, #8073E0 98.02%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
+            color: "#B048B0",
             fontSize: "40px",
             fontFamily: "Inter, sans-serif",
-            fontWeight: "350",
+            fontWeight: "400",
             textTransform: "capitalize",
             lineHeight: "60px",
             wordWrap: "break-word",
           }}
         >
-            Frequently Ask Questions
+          Frequently Ask Questions
         </motion.div>
 
         {/* FAQ Grid Layout */}
@@ -195,10 +191,10 @@ export default function FAQ() {
               >
                 {openIndex === 3 ? (
                   // Minus Icon
-                <motion.div
+                  <motion.div
                     initial={{ rotate: 90 }}
                     animate={{ rotate: 0 }}
-                  transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.3 }}
                     style={{
                       width: "24px",
                       height: "3px",
@@ -494,7 +490,66 @@ export default function FAQ() {
               </AnimatePresence>
             </motion.div>
 
-           
+            {/* Fifth FAQ - Static (no expand) */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="relative"
+              style={{
+                background: "white",
+                boxShadow: "0px 4px 4px #D7D9EB",
+                borderRadius: "27.34px",
+                padding: "40px 50px",
+                minHeight: "100px",
+              }}
+            >
+              {/* Plus Icon */}
+              <div
+                className="absolute left-12 top-12"
+                style={{ width: "24px", height: "24px" }}
+              >
+                <div className="relative">
+                  <div
+                    style={{
+                      width: "20px",
+                      height: "3px",
+                      background: "#1B1139",
+                      borderRadius: "20px",
+                      opacity: 0.8,
+                    }}
+                  />
+                  <div
+                    style={{
+                      width: "3px",
+                      height: "20px",
+                      background: "#1B1139",
+                      borderRadius: "20px",
+                      opacity: 0.8,
+                      position: "absolute",
+                      top: "-8.5px",
+                      left: "8.5px",
+                    }}
+                  />
+                </div>
+              </div>
+
+              {/* Question */}
+              <div
+                style={{
+                  marginLeft: "60px",
+                  opacity: 0.88,
+                  color: "#1B1139",
+                  fontSize: "18px",
+                  fontFamily: "Inter, sans-serif",
+                  fontWeight: "600",
+                  lineHeight: "23.40px",
+                  wordWrap: "break-word",
+                }}
+              >
+                How long until we deliver your first blog post?
+              </div>
+            </motion.div>
           </div>
         </div>
       </div>

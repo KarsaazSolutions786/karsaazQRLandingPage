@@ -8,9 +8,9 @@ const Step = ({ number, title, description, isLast }) => {
         <div className="flex-shrink-0 w-6 h-6 rounded-full bg-slate-500"></div>
         {!isLast && <div className="w-0.5 h-20 bg-slate-300 mt-0"></div>}
       </div>
-      <div className="pt-px">
+      <div className="-mt-2">
         <h3
-          className="text-xl font-bold text-transparent"
+          className="text-3xl font-bold text-transparent"
           style={{
             background:
               "linear-gradient(90.77deg, #B048B0 9.76%, #A550B9 31.16%, #8073E0 98.02%)",
@@ -20,7 +20,7 @@ const Step = ({ number, title, description, isLast }) => {
         >
           {title}
         </h3>
-        <p className="mt-2 text-gray-700">{description}</p>
+        <p className="mt-2 text-gray-700 text-lg te">{description}</p>
       </div>
     </div>
   );
@@ -47,12 +47,12 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section className="py-24">
+    <section className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-24 items-center">
           {/* Left Column: Steps */}
           <div>
-            <h2 className="text-4xl font-extrabold text-gray-800 tracking-tight mb-16 leading-tight">
+            <h2 className="text-4xl font-extrabold text-gray-800 tracking-tight mb-10 leading-tight">
               Quick Steps To Generate QR
               <br />
               using Karsaaz QR
@@ -72,7 +72,17 @@ export default function HowItWorks() {
 
           {/* Right Column: Phone Image */}
           <div className="relative flex justify-center items-center h-[600px]">
-            <div className="absolute inset-y-24 -inset-x-8 bg-gradient-to-br from-purple-400 to-fuchsia-500 rounded-3xl transform -rotate-3"></div>
+            <div className="absolute inset-y-44 -inset-x-0 ">
+              <Image
+                src="/img/HIW.png"
+                alt="KarsaazQR in action"
+                width={550}
+                height={550}
+                className="object-contain"
+                priority
+              />
+            </div>
+            {/* <div className="w-[572.57px] h-96 px-6 py-4 bg-gradient-to-bl from-fuchsia-700/80 via-fuchsia-700/80 to-violet-500 rounded-bl-[40px] rounded-br-[40px]" /> */}
             <Image
               src="/img/phone.png"
               alt="Phone showing Karsaaz QR"

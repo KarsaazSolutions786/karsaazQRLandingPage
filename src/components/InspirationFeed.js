@@ -7,69 +7,54 @@ import Image from "next/image";
 
 const inspirationalPhrases = [
   {
-    text: "weeknight dinner idea",
-    colors: "from-yellow-600 to-orange-500",
-    dotColor: "bg-yellow-500",
+    text: "Generate unlimited QR",
+    colors: "from-purple-600 to-pink-500",
+    dotColor: "bg-purple-500",
   },
   {
-    text: "new look outfit",
-    colors: "from-blue-500 to-cyan-400",
+    text: "Customize  QR",
+    colors: "from-purple-600 to-pink-500",
     dotColor: "bg-blue-500",
-  },
-  {
-    text: "home decor inspiration",
-    colors: "from-green-500 to-teal-500",
-    dotColor: "bg-green-500",
-  },
-  {
-    text: "DIY project to try",
-    colors: "from-pink-500 to-rose-500",
-    dotColor: "bg-pink-500",
   },
 ];
 
-const generateImages = (count = 24) => {
-  // Create stepped pattern that mimics the reference layout
-  const imageConfigs = [
-    // First row - natural stepped pattern
-    { width: 236, height: 350, span: 1 }, // taller
+// Different image sets for each tab
+const imagesByTab = {
+  0: [
+    // QR Code inspiration images
+    "bf1c3f211e7fd2d8ff5b3f06492adeb4ca91e314.jpg",
+    "bb1dee4a80f9ef1ef268290801b509c824018130.jpg",
+    "b3446b8a06d06c5ed14ea86199eca894b3c0c2db.jpg",
+    "885c0844ceaa11cf5dcea502c8af76894615f415.jpg",
+    "512a7cee82d1f41c5968eb88c978ba8cfa20afe4.jpg",
+    "55d8b2b252ec793e3bef3e16420e57e439704483.jpg",
+    "52b43bc2bb55a8a3f2f8b526baccdf42535799c7.jpg",
+  ],
+  1: [
+    // Creative designs images
+    "027be33894386c15f7d6cace168fde89bea0b033.jpg",
+    "08affdffa379722076d323bea296f7480ed0e683.jpg",
+    "6a0e48120f1060b1e8e467913d02c5701f4ffefa.jpg",
+    "3aaf305a7cbcbc98c3d7e7941c925885c467efd0.jpg",
+    "cf7e8124235cbd822362c66e16aaef4923a60970.jpg",
+    "eb83f21b2eb2f3909811729a8dfca5cbffa7bc97.jpg",
+  ],
+};
 
-    { height: 320, width: 236, span: 1 }, // left start
-    { width: 236, height: 240, span: 1 }, // step down
-    { width: 236, height: 180, span: 1 }, // shortest
-    { width: 236, height: 280, span: 1 }, // step up
-
-    // Natural varied heights for organic flow
-    { width: 236, height: 300, span: 1 },
-    { width: 236, height: 400, span: 1 },
-    { width: 236, height: 260, span: 1 },
-    { width: 236, height: 340, span: 1 },
-    { width: 236, height: 220, span: 1 },
-    { width: 236, height: 380, span: 1 },
-    { width: 236, height: 310, span: 1 },
-    { width: 236, height: 420, span: 1 },
-    { width: 236, height: 290, span: 1 },
-    { width: 236, height: 360, span: 1 },
-    { width: 236, height: 250, span: 1 },
-    { width: 236, height: 330, span: 1 },
-    { width: 236, height: 410, span: 1 },
-    { width: 236, height: 285, span: 1 },
-    { width: 236, height: 355, span: 1 },
-    { width: 236, height: 295, span: 1 },
-    { width: 236, height: 375, span: 1 },
-    { width: 236, height: 315, span: 1 },
-    { width: 236, height: 345, span: 1 },
-  ];
+const generateImages = (tabIndex, count = 24) => {
+  // Create varied heights for masonry effect but with consistent width
+  const heightVariations = [280, 320, 360, 240, 300, 340, 260, 380, 290, 330];
+  const tabImages = imagesByTab[tabIndex] || imagesByTab[0];
 
   return Array.from({ length: count }, (_, i) => {
-    const config = imageConfigs[i % imageConfigs.length];
+    const imageIndex = i % tabImages.length;
+    const height = heightVariations[i % heightVariations.length];
+
     return {
-      src: `https://picsum.photos/${config.width}/${config.height}?random=${
-        Date.now() + i
-      }`,
-      width: config.width,
-      height: config.height,
-      span: config.span,
+      src: `/img/imageslidere/${tabImages[imageIndex]}`,
+      width: 236, // Consistent width for all images
+      height: height, // Varied heights for masonry effect
+      span: 1,
       id: `img-${Date.now()}-${i}`,
     };
   });
@@ -91,7 +76,7 @@ export default function InspirationFeed() {
 
   useEffect(() => {
     // Pre-load initial images on mount
-    setImages(generateImages());
+    setImages(generateImages(0));
 
     const interval = setInterval(() => {
       setPhraseIndex(
@@ -104,7 +89,7 @@ export default function InspirationFeed() {
   useEffect(() => {
     // Generate new images when phraseIndex changes, but not on initial mount
     if (images.length > 0) {
-      setImages(generateImages());
+      setImages(generateImages(phraseIndex));
     }
   }, [phraseIndex]);
 
@@ -138,7 +123,7 @@ export default function InspirationFeed() {
       <div className="relative z-20">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-800 mb-2">
-            Get your next
+            With Karsaaz QR
           </h2>
           <div className="h-12 flex items-center justify-center">
             <AnimatePresence mode="wait">
@@ -195,13 +180,18 @@ export default function InspirationFeed() {
                       "0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08)",
                   }}
                 >
-                  <Image
-                    src={image.src}
-                    alt="Inspiration image"
-                    width={image.width}
-                    height={image.height}
-                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
+                  <div
+                    className="w-full"
+                    style={{ height: `${image.height}px` }}
+                  >
+                    <Image
+                      src={image.src}
+                      alt="QR Code inspiration image"
+                      width={236}
+                      height={image.height}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
                 </motion.div>
               ))}
             </Masonry>
