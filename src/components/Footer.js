@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 export default function Footer() {
@@ -87,38 +88,13 @@ export default function Footer() {
           {/* Newsletter Section */}
           <div className="space-y-8">
             <div className="flex items-center space-x-2">
-              <svg
-                width="36"
-                height="36"
-                viewBox="0 0 32 32"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect
-                  width="32"
-                  height="32"
-                  rx="8"
-                  fill="url(#logo-gradient-footer)"
-                />
-                <path
-                  d="M9 14.75V12.5H11.25V14.75H9ZM14.75 12.5H12.5V14.75H14.75V12.5ZM12.5 9H14.75V11.25H12.5V9ZM9 9H11.25V11.25H9V9ZM14.75 16.25V15.75H16.25V16.25H14.75ZM15.25 18.25V16.25H16.75V18.25H15.25ZM9 16.25V18.25H11.25V16.25H9ZM11.25 18.25V19.5H9V21.5H11.25V23H13.25V21H11.25V19.5H12.5V18.25H11.25ZM19.5 9H16.25V12.5H19.5V9ZM23 9V12.5H19.5V14H23V16.25H19.5V17.5H23V23H21V19.5H18.25V17.5H21V16.25H18.25V14H21V9H23Z"
-                  fill="white"
-                />
-                <defs>
-                  <linearGradient
-                    id="logo-gradient-footer"
-                    x1="0"
-                    y1="0"
-                    x2="32"
-                    y2="32"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stopColor="#A78BFA" />
-                    <stop offset="1" stopColor="#6366F1" />
-                  </linearGradient>
-                </defs>
-              </svg>
-              <span className="font-bold text-2xl text-gray-800">Karsaaz</span>
+              <Image
+                src="/img/logo.png"
+                alt="Main QR Code"
+                width={140}
+                height={140}
+                className="object-contain"
+              />
             </div>
             <div>
               <h3 className="text-lg font-semibold text-gray-800 mb-4">

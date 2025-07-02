@@ -138,6 +138,7 @@ export default function Pricing() {
                   "linear-gradient(90.77deg, #B048B0 0%, #A550B9 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
+                fontWeight: "600",
               }}
             >
               Ready to get{" "}
@@ -149,6 +150,7 @@ export default function Pricing() {
                   "linear-gradient(90.77deg, #A550B9 0%, #8073E0 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
+                fontWeight: "600",
               }}
             >
               started?

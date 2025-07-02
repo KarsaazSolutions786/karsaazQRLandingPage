@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 export default function Navbar() {
@@ -9,21 +10,22 @@ export default function Navbar() {
 
   return (
     <div className="sticky top-4 z-50 px-4">
-      <header className="max-w-7xl mx-auto rounded-2xl bg-white/60 backdrop-blur-md border border-gray-200/80 shadow-lg">
+      <header className="max-w-7xl mx-auto rounded-2xl bg-white/60 backdrop-blur-md border border-purple-200 shadow-lg">
         <div className="px-4 sm:px-6 lg:px-8 py-3">
           <nav className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center">
-              <span className="font-extrabold text-2xl text-gray-900 tracking-tight">
-                Karsaaz
-              </span>
-              <span className="ml-2 font-bold text-2xl text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600">
-                QR
-              </span>
+              <Image
+                src="/img/logo.png"
+                alt="Main QR Code"
+                width={140}
+                height={140}
+                className="object-contain"
+              />
             </div>
 
             {/* Nav Links */}
-            <div className="hidden md:flex items-center space-x-10">
+            <div className="hidden md:flex items-end space-x-10">
               {navLinks.map((link) => (
                 <a
                   key={link}

@@ -170,7 +170,7 @@ export default function InspirationFeed() {
       </div>
 
       {/* Masonry Grid with Fade Effect */}
-      <div className="relative h-[600px] -mt-16">
+      <div className="relative h-[500px] -mt-16">
         <AnimatePresence>
           <motion.div
             key={phraseIndex}
@@ -178,7 +178,7 @@ export default function InspirationFeed() {
             initial="hidden"
             animate="visible"
             exit={{ opacity: 0, transition: { duration: 0.5 } }}
-            className="absolute inset-0 pt-[60px] px-12 max-w-6xl mx-auto -left-80 right-0"
+            className="absolute inset-0 pt-[60px] px-12 max-w-5xl mx-auto -left-65 right-0"
           >
             <Masonry
               breakpointCols={breakpointColumnsObj}

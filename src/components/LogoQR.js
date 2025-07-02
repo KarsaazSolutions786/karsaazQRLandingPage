@@ -5,33 +5,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function LogoQR() {
-  const qrCodes = [
-    {
-      id: 1,
-      src: "/img/qr1.png",
-      alt: "Google QR Code",
-      rotation: -12,
-      position: { left: "15%", top: "20%" },
-      zIndex: 1,
-    },
-    {
-      id: 2,
-      src: "/img/qr2.png",
-      alt: "YouTube QR Code",
-      rotation: 8,
-      position: { left: "45%", top: "10%" },
-      zIndex: 3,
-    },
-    {
-      id: 3,
-      src: "/img/qr3.png",
-      alt: "Facebook QR Code",
-      rotation: -5,
-      position: { right: "10%", top: "25%" },
-      zIndex: 2,
-    },
-  ];
-
   return (
     <section className="relative py-12 px-6 overflow-hidden bg-gray-50">
       <div className="max-w-7xl mx-auto">
@@ -88,54 +61,38 @@ export default function LogoQR() {
               </motion.button>
             </motion.div>
 
-            {/* Right Content - QR Codes */}
+            {/* Right Content - Main QR Code */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="relative h-[300px] lg:h-[350px]"
+              className="relative h-[300px] lg:h-[350px] flex items-center justify-center"
             >
-              {qrCodes.map((qr, index) => (
-                <motion.div
-                  key={qr.id}
-                  initial={{ opacity: 0, scale: 0.8, rotate: 0 }}
-                  animate={{
-                    opacity: 1,
-                    scale: 1,
-                    rotate: qr.rotation,
-                  }}
-                  transition={{
-                    duration: 0.6,
-                    delay: 0.6 + index * 0.2,
-                    type: "spring",
-                    stiffness: 100,
-                  }}
-                  whileHover={{
-                    scale: 1.05,
-                    rotate: qr.rotation + 3,
-                    zIndex: 10,
-                  }}
-                  className="absolute cursor-pointer"
-                  style={{
-                    ...qr.position,
-                    zIndex: qr.zIndex,
-                  }}
-                >
-                  <div className="bg-white p-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300">
-                    <div className="w-24 h-24 lg:w-28 lg:h-28 relative">
-                      <Image
-                        src={qr.src}
-                        alt={qr.alt}
-                        fill
-                        className="object-contain rounded-lg"
-                      />
-                    </div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.6,
+                  type: "spring",
+                  stiffness: 100,
+                }}
+                whileHover={{ scale: 1.05 }}
+                className="cursor-pointer"
+              >
+                <div className=" p-6 rounded-2xl transition-all duration-300">
+                  <div className="w-[148px] h-[148px]relative">
+                    <Image
+                      src="/img/qrMain.png"
+                      alt="Main QR Code"
+                      fill
+                      className="object-contain rounded-lg"
+                    />
                   </div>
-                </motion.div>
-              ))}
+                </div>
+              </motion.div>
             </motion.div>
-          </div>
-
+          </div> 
           {/* Decorative Elements */}
           <div className="absolute top-10 right-20 w-16 h-16 bg-white/10 rounded-full blur-xl"></div>
           <div className="absolute bottom-10 left-20 w-24 h-24 bg-pink-300/20 rounded-full blur-2xl"></div>
