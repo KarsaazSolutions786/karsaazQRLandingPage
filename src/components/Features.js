@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 
 const FeatureCard = ({ title, description, imageSrc }) => {
   return (
-    <div className="bg-white border border-purple-100 rounded-2xl sm:rounded-3xl p-4 sm:p-6 flex flex-col items-center shadow-lg transition-all hover:shadow-purple-200 hover:-translate-y-1">
-      <div className="w-full h-32 sm:h-40 lg:h-48 mb-4 sm:mb-6 flex items-center justify-center overflow-hidden">
+    <div className="bg-white border border-purple-100 rounded-3xl p-0 flex flex-col items-center shadow-lg transition-all hover:shadow-purple-200 hover:-translate-y-1">
+      <div className="w-full h-48 mb-6 flex items-center justify-center overflow-hidden">
         {imageSrc ? (
           <Image
             src={imageSrc}
@@ -16,7 +16,7 @@ const FeatureCard = ({ title, description, imageSrc }) => {
           />
         ) : (
           <svg
-            className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 text-gray-400"
+            className="w-24 h-24 text-gray-400"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -31,13 +31,11 @@ const FeatureCard = ({ title, description, imageSrc }) => {
         )}
       </div>
       <div className="w-full border-t border-gray-200"></div>
-      <div className="w-full pt-3 sm:pt-4 text-center sm:text-left">
-        <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2">
+      <div className="w-full pt-4 p-5">
+        <h3 className="text-xl font-bold text-gray-800 mb-2 text-left">
           {title}
         </h3>
-        <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-          {description}
-        </p>
+        <p className="text-gray-600 text-left">{description}</p>
       </div>
     </div>
   );
@@ -170,11 +168,11 @@ export default function Features({ activeType = "PDF" }) {
   const featuresData = getFeaturesByType(activeType);
 
   return (
-    <section className="py-12 sm:py-16 lg:py-24">
+    <section className="py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           key={activeType}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
           initial="hidden"
           animate="visible"
           variants={{
@@ -182,7 +180,7 @@ export default function Features({ activeType = "PDF" }) {
             visible: {
               opacity: 1,
               transition: {
-                staggerChildren: 0.1,
+                staggerChildren: 0.2,
               },
             },
           }}
@@ -191,18 +189,22 @@ export default function Features({ activeType = "PDF" }) {
             <motion.div
               key={`${activeType}-${index}`}
               variants={{
-                hidden: { opacity: 0, y: 30 },
+                hidden: { opacity: 0, y: 50 },
                 visible: {
                   opacity: 1,
                   y: 0,
                   transition: {
-                    duration: 0.5,
+                    duration: 0.6,
                     ease: "easeOut",
                   },
                 },
               }}
             >
-              <FeatureCard {...feature} />
+              <FeatureCard
+                title={feature.title}
+                description={feature.description}
+                imageSrc={feature.imageSrc}
+              />
             </motion.div>
           ))}
         </motion.div>

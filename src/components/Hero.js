@@ -42,12 +42,12 @@ export default function Hero({ activeType, setActiveType }) {
 
       <div
         id="home"
-        className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-16 pb-6 sm:pb-10 text-center"
+        className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10 text-center"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center relative">
+        <div className="grid md:grid-cols-2 gap-16 items-center relative">
           {/* Left Column */}
-          <div className="text-center md:text-left order-2 md:order-1">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
+          <div className="text-left">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
               <span
                 style={{
                   background:
@@ -75,27 +75,48 @@ export default function Hero({ activeType, setActiveType }) {
                 </span>
               </span>
             </h1>
-            <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 max-w-lg mx-auto md:mx-0">
+            <p className="mt-6 text-2xl text-gray-600 max-w-lg">
               Quickly Generate, Control, and Monitor the Performance of Your{" "}
               <span className="text-black font-bold">QR Codes</span>
             </p>
-            <div className="mt-6 sm:mt-10 flex justify-center md:justify-start">
-              <button
-                className="w-full sm:w-auto min-w-[200px] sm:min-w-[150px] h-12 sm:h-[50px] px-6 sm:px-8 py-3 rounded-full text-white font-medium text-sm sm:text-base transition-all duration-300 hover:scale-105 active:scale-95"
+            <div className="mt-10">
+              <div
                 style={{
+                  width: "150px",
+                  height: "50px",
+                  paddingLeft: 20.1,
+                  paddingRight: 20.1,
+                  paddingTop: 22.05,
+                  paddingBottom: 22.05,
                   background:
                     "radial-gradient(ellipse 85.59% 107.08% at 86.30% 87.50%, rgba(0, 0, 0, 0.23) 0%, rgba(0, 0, 0, 0) 86%), radial-gradient(ellipse 83.94% 83.94% at 26.39% 20.83%, rgba(255, 255, 255, 0.41) 0%, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 0) 100%), #8073E0",
-                  boxShadow: "3.39px 32.23px 52.58px rgba(0, 0, 0, 0.20)",
-                  textShadow: "1px 1px 1px rgba(0, 0, 0, 0.25)",
+                  boxShadow:
+                    "3.3924050331115723px 32.227848052978516px 52.582279205322266px rgba(0, 0, 0, 0.20)",
+                  borderRadius: 92.44,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: 8.48,
+                  display: "inline-flex",
                 }}
               >
-                Generate QR
-              </button>
+                <div
+                  style={{
+                    color: "rgba(255, 255, 255, 0.70)",
+                    fontSize: 15.66,
+                    fontFamily: "Inter",
+                    fontWeight: "400",
+                    wordWrap: "break-word",
+                    textShadow: "1px 1px 1px rgba(0, 0, 0, 0.25)",
+                  }}
+                >
+                  Generate QR
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Curved Arrow - Hidden on mobile */}
-          <div className="absolute top-34 left-[48%] transform -translate-x-1/4 hidden lg:block z-10">
+          {/* Curved Arrow */}
+          <div className="absolute top-34 left-[48%] transform -translate-x-1/4 hidden md:block z-10">
             <Image
               src="/img/arrow.png"
               alt="Decorative arrow"
@@ -104,7 +125,7 @@ export default function Hero({ activeType, setActiveType }) {
               className="object-contain"
             />
           </div>
-          <div className="absolute top-[367px] left-[22.3%] transform -translate-x-1/4 hidden lg:block z-10">
+          <div className="absolute top-[367px] left-[22.3%] transform -translate-x-1/4 hidden md:block z-10">
             <Image
               src="/img/underline.png"
               alt="Decorative arrow"
@@ -113,30 +134,28 @@ export default function Hero({ activeType, setActiveType }) {
               className="object-contain"
             />
           </div>
-
           {/* Right Column */}
-          <div className="relative flex justify-center items-center order-1 md:order-2">
+          <div className="relative flex justify-center items-center">
             <Image
               src="/img/hero_1.png"
               alt="KarsaazQR in action"
               width={550}
               height={550}
-              className="object-contain w-full max-w-[300px] sm:max-w-[400px] md:max-w-[550px] h-auto"
+              className="object-contain"
               priority
             />
           </div>
         </div>
       </div>
 
-      {/* QR Types Carousel Section - Mobile Optimized */}
-      <div className="pb-4 px-2 sm:px-4">
-        <div className="max-w-6xl mx-auto p-3 sm:p-6 bg-white/70 backdrop-blur-md rounded-[50px] sm:rounded-[102.49px] shadow-lg">
+      {/* QR Types Carousel Section */}
+      <div className="pb-1">
+        <div className="max-w-4xl mx-auto p-6 bg-white/70 backdrop-blur-md rounded-[102.49px] shadow-lg">
           <div className="relative">
-            {/* Desktop Layout */}
-            <div className="hidden sm:flex items-center justify-between">
-              <button className="rounded-full text-purple-600 hover:bg-purple-100/50 transition-colors p-2">
+            <div className="flex items-center justify-between">
+              <button className="rounded-full text-purple-600 hover:bg-purple-100/50 transition-colors">
                 <svg
-                  className="w-8 h-8 lg:w-10 lg:h-10"
+                  className="w-10 h-10"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -150,7 +169,7 @@ export default function Hero({ activeType, setActiveType }) {
                 </svg>
               </button>
               <div className="flex-1 overflow-hidden">
-                <div className="flex justify-center items-center space-x-2 lg:space-x-4">
+                <div className="flex justify-center items-center space-x-2">
                   {qrTypes.map((type) => (
                     <div
                       key={type.name}
@@ -160,7 +179,7 @@ export default function Hero({ activeType, setActiveType }) {
                       <div className="relative">
                         {activeType === type.name && <ActiveBorder />}
                         <div
-                          className={`w-16 h-16 lg:w-20 lg:h-20 flex items-center justify-center transition-opacity duration-300 bg-white rounded-2xl lg:rounded-3xl shadow-lg ${
+                          className={`w-20 h-20 flex items-center justify-center transition-opacity duration-300 bg-white rounded-3xl shadow-[3.7074687480926514px_3.7074687480926514px_9.639418601989746px_0px_rgba(230,230,230,0.90)] shadow-[-3.7074687480926514px_-3.7074687480926514px_7.414937496185303px_0px_rgba(255,255,255,0.90)] shadow-[3.7074687480926514px_-3.7074687480926514px_7.414937496185303px_0px_rgba(230,230,230,0.20)] shadow-[-3.7074687480926514px_3.7074687480926514px_7.414937496185303px_0px_rgba(230,230,230,0.20)] shadow-[inset_-0.7414937615394592px_-0.7414937615394592px_1.4829875230789185px_0px_rgba(186,186,211,0.30)] shadow-[inset_0.7414937615394592px_0.7414937615394592px_1.4829875230789185px_0px_rgba(208,208,223,0.30)] ${
                             activeType === type.name
                               ? "opacity-100"
                               : "opacity-40 border border-neutral-300"
@@ -183,9 +202,9 @@ export default function Hero({ activeType, setActiveType }) {
                   ))}
                 </div>
               </div>
-              <button className="rounded-full text-purple-600 hover:bg-purple-100/50 transition-colors p-2">
+              <button className=" rounded-full text-purple-600 hover:bg-purple-100/50 transition-colors">
                 <svg
-                  className="w-8 h-8 lg:w-10 lg:h-10"
+                  className="w-10 h-10"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -199,47 +218,6 @@ export default function Hero({ activeType, setActiveType }) {
                 </svg>
               </button>
             </div>
-
-            {/* Mobile Layout - Horizontal Scroll */}
-            <div className="sm:hidden">
-              <div className="flex space-x-3 overflow-x-auto scrollbar-hide pb-2 px-1">
-                {qrTypes.map((type) => (
-                  <div
-                    key={type.name}
-                    onClick={() => setActiveType(type.name)}
-                    className="flex flex-col items-center space-y-1 text-center cursor-pointer group flex-shrink-0"
-                  >
-                    <div className="relative">
-                      {activeType === type.name && (
-                        <div className="absolute inset-0 bg-purple-200 rounded-2xl scale-110 -z-10"></div>
-                      )}
-                      <div
-                        className={`w-14 h-14 flex items-center justify-center transition-all duration-300 bg-white rounded-2xl shadow-md ${
-                          activeType === type.name
-                            ? "opacity-100 scale-105"
-                            : "opacity-60"
-                        }`}
-                      >
-                        <Icon
-                          type={type.icon}
-                          isActive={activeType === type.name}
-                          size="small"
-                        />
-                      </div>
-                    </div>
-                    <p
-                      className={`text-xs font-medium transition-colors whitespace-nowrap ${
-                        activeType === type.name
-                          ? "text-purple-600"
-                          : "text-gray-600"
-                      }`}
-                    >
-                      {type.name}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -247,37 +225,34 @@ export default function Hero({ activeType, setActiveType }) {
   );
 }
 
-const Icon = ({ type, isActive, size = "normal" }) => {
+const Icon = ({ type, isActive }) => {
   const iconMap = {
     file: "/icons/proicons_pdf-2.svg",
     link: "/icons/line-md_link.svg",
     mobile: "/icons/circum_mobile-4.svg",
     calendar: "/icons/material-symbols-light_event-note-outline-rounded.svg",
     image: "/icons/mage_image.svg",
-    audio: "/icons/Vector.svg",
+    audio: "/icons/Vector.svg", // Using Vector.svg for audio
     coupon: "/icons/hugeicons_coupon-02.svg",
     website: "/icons/streamline-plump_browser-website-1.svg",
   };
 
   const iconSrc = iconMap[type];
-  const iconSize = size === "small" ? 20 : 24;
 
-  if (!iconSrc) {
-    return <div className="w-6 h-6 bg-gray-300 rounded"></div>;
-  }
+  if (!iconSrc) return null;
 
   return (
-    <div className="relative">
+    <div className="w-8 h-8 transition-colors relative">
       <Image
         src={iconSrc}
         alt={`${type} icon`}
-        width={iconSize}
-        height={iconSize}
-        className="object-contain transition-all duration-300"
+        width={40}
+        height={40}
+        className="object-contain"
         style={{
           filter: isActive
-            ? "brightness(0) saturate(100%) invert(36%) sepia(88%) saturate(2298%) hue-rotate(258deg) brightness(92%) contrast(92%)"
-            : "brightness(0) saturate(100%) opacity(0.6)",
+            ? "brightness(0) saturate(100%) invert(36%) sepia(88%) saturate(2298%) hue-rotate(258deg) brightness(92%) contrast(92%)" // #7E4CDE active color filter
+            : "brightness(0) saturate(100%)", // Pure black color for inactive icons
         }}
       />
     </div>

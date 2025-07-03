@@ -7,8 +7,7 @@ export default function Pricing() {
   const [isYearly, setIsYearly] = useState(false);
 
   const pillButtonStyle = {
-    width: "100%",
-    maxWidth: "200px",
+    width: "200px",
     height: "50px",
     paddingLeft: 20.1,
     paddingRight: 20.1,
@@ -32,8 +31,7 @@ export default function Pricing() {
   };
 
   const whitePillStyle = {
-    width: "100%",
-    maxWidth: "150px",
+    width: "150px",
     height: "50px",
     background: "#FFFFFF",
     borderRadius: 92.44,
@@ -114,13 +112,10 @@ export default function Pricing() {
   ];
 
   return (
-    <section
-      id="pricing"
-      className="relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6 overflow-hidden"
-    >
+    <section id="pricing" className="relative py-20 px-6 overflow-hidden">
       {/* Purple Gradient Background */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 h-[463]"
         style={{
           background:
             "linear-gradient(105.27deg, rgba(176, 72, 176, 0.6) 16.17%, rgba(128, 115, 224, 0.3) 87.53%)",
@@ -133,9 +128,9 @@ export default function Pricing() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-8 sm:mb-12"
+          className="text-center mb-12"
         >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4">
+          <h2 className="text-4xl lg:text-5xl font-bold mb-4">
             <span
               className="bg-clip-text text-transparent"
               style={{
@@ -159,95 +154,75 @@ export default function Pricing() {
               started?
             </span>
           </h2>
-          <p className="text-sm sm:text-base lg:text-lg mb-6 sm:mb-8 px-4">
+          <p className="text-lg mb-8">
             14 days unlimited free trial. No contract or credit card required.
           </p>
 
-          {/* Monthly/Yearly Toggle - Mobile Optimized */}
-          <div className="flex items-center justify-center space-x-3 sm:space-x-4 mb-8 sm:mb-12">
-            <span className="text-sm sm:text-base lg:text-lg font-medium">
-              Monthly
-            </span>
+          {/* Monthly/Yearly Toggle */}
+          <div className="flex items-center justify-center space-x-4 mb-12">
+            <span className={`text-lg font-medium `}>Monthly</span>
             <motion.button
               onClick={() => setIsYearly(!isYearly)}
-              className="relative w-14 h-7 sm:w-16 sm:h-8 rounded-full p-1 transition-colors duration-300"
+              className="relative w-16 h-8 rounded-full p-1 transition-colors duration-300"
               style={{
                 background: "linear-gradient(90deg, #BB9DF3 0%, #8351E0 100%)",
               }}
             >
               <motion.div
-                animate={{ x: isYearly ? 28 : 0 }}
+                animate={{ x: isYearly ? 32 : 0 }}
                 transition={{ duration: 0.3 }}
-                className="w-5 h-5 sm:w-6 sm:h-6 bg-white rounded-full shadow-md"
-                style={{
-                  transform: isYearly ? "translateX(28px)" : "translateX(0px)",
-                }}
+                className="w-6 h-6 bg-white rounded-full shadow-md"
               />
             </motion.button>
-            <span className="text-sm sm:text-base lg:text-lg font-medium">
-              Yearly
-            </span>
+            <span className={`text-lg font-medium `}>Yearly</span>
           </div>
         </motion.div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {plans.map((plan, index) => (
             <motion.div
               key={plan.name}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`relative rounded-2xl sm:rounded-3xl p-6 sm:p-8 transition-all duration-300 flex flex-col items-start h-full ${
+              className={`relative rounded-3xl p-8 transition-all duration-300 flex flex-col items-start h-full ${
                 plan.isPopular
-                  ? "text-white transform lg:scale-105 shadow-2xl"
+                  ? "text-white transform scale-105 shadow-2xl"
                   : "bg-white text-gray-800 shadow-xl hover:shadow-2xl"
               }`}
               style={plan.isPopular && plan.cardStyle ? plan.cardStyle : {}}
             >
-              {/* Popular Badge */}
-              {plan.isPopular && (
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-yellow-400 text-black px-4 py-1 rounded-full text-xs font-semibold">
-                    Most Popular
-                  </div>
-                </div>
-              )}
-
               {/* Plan Name */}
-              <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">
-                {plan.name}
-              </h3>
+              <h3 className="text-2xl font-bold mb-6">{plan.name}</h3>
 
               {/* Price */}
-              <div className="mb-6 sm:mb-8">
+              <div className="mb-8">
                 <div className="flex items-baseline">
-                  <span className="text-3xl sm:text-4xl lg:text-5xl font-bold">
+                  <span className="text-5xl font-bold">
                     $
                     {isYearly
                       ? Math.floor(plan.yearlyPrice / 12)
                       : plan.monthlyPrice}
                   </span>
-                  <span className="text-sm sm:text-base lg:text-lg ml-2 opacity-70">
-                    /month
-                  </span>
+                  <span className="text-lg ml-2 opacity-70">/month</span>
                 </div>
                 {isYearly && (
-                  <div className="text-xs sm:text-sm opacity-70 mt-1">
+                  <div className="text-sm opacity-70 mt-1">
                     Billed annually (${plan.yearlyPrice}/year)
                   </div>
                 )}
               </div>
 
               {/* Features */}
-              <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8 flex-1 w-full">
+              <div className="space-y-4 mb-8 flex-1">
                 {plan.features.map((feature, featureIndex) => (
                   <div
                     key={featureIndex}
                     className="flex items-center space-x-3"
                   >
                     <svg
-                      className={`w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 ${
+                      className={`w-5 h-5 flex-shrink-0 ${
                         plan.isPopular ? "text-white" : "text-blue-500"
                       }`}
                       fill="currentColor"
@@ -259,7 +234,7 @@ export default function Pricing() {
                         clipRule="evenodd"
                       />
                     </svg>
-                    <span className="text-sm sm:text-base">{feature}</span>
+                    <span className="text-base">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -269,7 +244,7 @@ export default function Pricing() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full max-w-[200px] py-3 sm:py-4 rounded-full font-semibold text-sm sm:text-base lg:text-lg transition-all duration-300"
+                  className="py-4 rounded-full font-semibold text-lg transition-all duration-300"
                   style={plan.isPopular ? whitePillStyle : pillButtonStyle}
                 >
                   Buy Now
@@ -280,9 +255,9 @@ export default function Pricing() {
         </div>
       </div>
 
-      {/* Decorative Elements - Hidden on mobile */}
-      <div className="hidden lg:block absolute top-20 left-10 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
-      <div className="hidden lg:block absolute bottom-20 right-10 w-40 h-40 bg-purple-300/20 rounded-full blur-3xl"></div>
+      {/* Decorative Elements */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+      <div className="absolute bottom-20 right-10 w-40 h-40 bg-purple-300/20 rounded-full blur-3xl"></div>
     </section>
   );
 }

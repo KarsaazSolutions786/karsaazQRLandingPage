@@ -3,16 +3,14 @@ import Image from "next/image";
 
 const Step = ({ number, title, description, isLast }) => {
   return (
-    <div className="flex items-start pb-4 sm:pb-6">
-      <div className="flex flex-col items-center mr-4 sm:mr-8">
-        <div className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-slate-500"></div>
-        {!isLast && (
-          <div className="w-0.5 h-16 sm:h-20 bg-slate-300 mt-1"></div>
-        )}
+    <div className="flex items-start pb-0">
+      <div className="flex flex-col items-center mr-8">
+        <div className="flex-shrink-0 w-6 h-6 rounded-full bg-slate-500"></div>
+        {!isLast && <div className="w-0.5 h-20 bg-slate-300 mt-0"></div>}
       </div>
-      <div className="-mt-1 sm:-mt-2">
+      <div className="-mt-2">
         <h3
-          className="text-xl sm:text-2xl lg:text-3xl font-bold text-transparent"
+          className="text-3xl font-bold text-transparent"
           style={{
             background:
               "linear-gradient(90.77deg, #B048B0 9.76%, #A550B9 31.16%, #8073E0 98.02%)",
@@ -22,9 +20,7 @@ const Step = ({ number, title, description, isLast }) => {
         >
           {title}
         </h3>
-        <p className="mt-2 text-gray-700 text-sm sm:text-base lg:text-lg leading-relaxed">
-          {description}
-        </p>
+        <p className="mt-2 text-gray-700 text-lg te">{description}</p>
       </div>
     </div>
   );
@@ -51,14 +47,14 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section id="how-to" className="py-12 sm:py-16 lg:py-20">
+    <section id="how-to" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-24 items-center">
+        <div className="grid md:grid-cols-2 gap-24 items-center">
           {/* Left Column: Steps */}
-          <div className="order-2 lg:order-1">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-800 tracking-tight mb-6 sm:mb-8 lg:mb-10 leading-tight text-center lg:text-left">
+          <div>
+            <h2 className="text-4xl font-extrabold text-gray-800 tracking-tight mb-10 leading-tight">
               Quick Steps To Generate QR
-              <br className="hidden sm:block" />
+              <br />
               using Karsaaz QR
             </h2>
             <div>
@@ -75,25 +71,24 @@ export default function HowItWorks() {
           </div>
 
           {/* Right Column: Phone Image */}
-          <div className="relative flex justify-center items-center h-[400px] sm:h-[500px] lg:h-[600px] order-1 lg:order-2">
-            {/* Background HIW Image */}
-            <div className="absolute inset-y-20 sm:inset-y-32 lg:inset-y-44 -inset-x-4 sm:-inset-x-0">
+          <div className="relative flex justify-center items-center h-[600px]">
+            <div className="absolute inset-y-44 -inset-x-0 ">
               <Image
                 src="/img/HIW.png"
                 alt="KarsaazQR in action"
                 width={550}
                 height={550}
-                className="object-contain w-full h-full"
+                className="object-contain"
                 priority
               />
             </div>
-            {/* Phone Frame */}
+            {/* <div className="w-[572.57px] h-96 px-6 py-4 bg-gradient-to-bl from-fuchsia-700/80 via-fuchsia-700/80 to-violet-500 rounded-bl-[40px] rounded-br-[40px]" /> */}
             <Image
               src="/img/phone.png"
               alt="Phone showing Karsaaz QR"
               width={320}
               height={640}
-              className="relative w-48 h-96 sm:w-60 sm:h-[480px] lg:w-80 lg:h-[640px] object-contain"
+              className="relative"
             />
           </div>
         </div>
