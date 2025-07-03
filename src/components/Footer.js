@@ -15,6 +15,7 @@ export default function Footer() {
 
   return (
     <footer
+      id="contact"
       className="border-t border-gray-200/60"
       style={{ background: "#F6F6F8" }}
     >

@@ -112,7 +112,7 @@ export default function Pricing() {
   ];
 
   return (
-    <section className="relative py-20 px-6 overflow-hidden">
+    <section id="pricing" className="relative py-20 px-6 overflow-hidden">
       {/* Purple Gradient Background */}
       <div
         className="absolute inset-0 h-[463]"

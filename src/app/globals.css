@@ -56,12 +56,72 @@ body {
   .my-masonry-grid_column:nth-child(3) { margin-top: 80px; }
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 738px) and (max-width: 1023px) {
   .my-masonry-grid_column:nth-child(1) { margin-top: 0px; }
   .my-masonry-grid_column:nth-child(2) { margin-top: 40px; }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 737px) {
   /* Single column – no offset needed */
   .my-masonry-grid_column { margin-top: 0px; }
+}
+
+/* Smooth scroll behavior for better UX */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for WebKit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Loading skeleton animation */
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+.skeleton {
+  animation: shimmer 1.2s ease-in-out infinite;
+  background: linear-gradient(to right, #f6f7f8 8%, #edeef1 18%, #f6f7f8 33%);
+  background-size: 800px 104px;
+}
+
+/* Improved focus states for accessibility */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Enhanced hover effects */
+.hover-lift:hover {
+  transform: translateY(-4px);
+  transition: transform 0.3s ease;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
 }

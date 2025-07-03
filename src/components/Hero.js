@@ -40,7 +40,10 @@ export default function Hero({ activeType, setActiveType }) {
         </div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10 text-center">
+      <div
+        id="home"
+        className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10 text-center"
+      >
         <div className="grid md:grid-cols-2 gap-16 items-center relative">
           {/* Left Column */}
           <div className="text-left">
