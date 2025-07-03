@@ -19,55 +19,57 @@ export default function Footer() {
       className="border-t border-gray-200/60"
       style={{ background: "#F6F6F8" }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12">
           {/* Contact US Section */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8 text-center sm:text-left">
             <h3 className="text-lg font-semibold text-gray-800">Contact US</h3>
-            <div className="space-y-6">
-              <div className="flex items-start space-x-4">
+            <div className="space-y-4 sm:space-y-6">
+              <div className="flex flex-col sm:flex-row items-center sm:items-start space-y-2 sm:space-y-0 sm:space-x-4">
                 <svg
-                  className="w-6 h-6 text-gray-400 flex-shrink-0"
+                  className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400 flex-shrink-0"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                 >
                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                 </svg>
-                <div className="text-gray-600">
+                <div className="text-gray-600 text-sm sm:text-base text-center sm:text-left">
                   <p>85 Great Portland Street, First Floor, London, W1W 7LT,</p>
                   <p>United Kingdom</p>
                 </div>
               </div>
-              <div className="flex items-start space-x-4">
+              <div className="flex flex-col sm:flex-row items-center sm:items-start space-y-2 sm:space-y-0 sm:space-x-4">
                 <svg
-                  className="w-6 h-6 text-gray-400 flex-shrink-0"
+                  className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400 flex-shrink-0"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                 >
                   <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
                 </svg>
-                <div className="text-gray-600">
+                <div className="text-gray-600 text-sm sm:text-base text-center sm:text-left">
                   <p>+44 7365 605535 (Available on WhatsApp, Mon-Fri</p>
                   <p>9am-6pm, UK Time)</p>
                 </div>
               </div>
-              <div className="flex items-center space-x-4">
+              <div className="flex flex-col sm:flex-row items-center sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
                 <svg
-                  className="w-6 h-6 text-gray-400 flex-shrink-0"
+                  className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400 flex-shrink-0"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                 >
                   <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                 </svg>
-                <p className="text-gray-600">info@karsaazQR.com</p>
+                <p className="text-gray-600 text-sm sm:text-base text-center sm:text-left">
+                  info@karsaazQR.com
+                </p>
               </div>
             </div>
           </div>
 
           {/* Product Section */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8 text-center sm:text-left">
             <h3 className="text-lg font-semibold text-gray-800">Product</h3>
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {[
                 "KarsaazAI",
                 "KarsaazQR",
@@ -78,7 +80,7 @@ export default function Footer() {
                 <a
                   key={item}
                   href="#"
-                  className="block text-gray-600 hover:text-purple-600 transition-colors"
+                  className="block text-gray-600 hover:text-purple-600 transition-colors text-sm sm:text-base"
                 >
                   {item}
                 </a>
@@ -87,42 +89,41 @@ export default function Footer() {
           </div>
 
           {/* Newsletter Section */}
-          <div className="space-y-8">
-            <div className="flex items-center space-x-2">
+          <div className="space-y-6 sm:space-y-8 text-center sm:text-left sm:col-span-2 lg:col-span-1">
+            <div className="flex justify-center sm:justify-start">
               <Image
                 src="/img/logo.png"
                 alt="Main QR Code"
-                width={140}
-                height={140}
-                className="object-contain"
+                width={120}
+                height={120}
+                className="object-contain sm:w-[140px] sm:h-[140px]"
               />
             </div>
             <div>
               <h3 className="text-lg font-semibold text-gray-800 mb-4">
                 Subscribe to our Newsletter
               </h3>
-              <form onSubmit={handleSubscribe} className="relative max-w-md">
-                <div className="flex items-center overflow-hidden shadow-lg rounded-lg bg-white">
+              <form
+                onSubmit={handleSubscribe}
+                className="relative max-w-md mx-auto sm:mx-0"
+              >
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center overflow-hidden shadow-lg rounded-lg bg-white">
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your Email"
-                    className="w-full h-14 bg-violet-50 border border-gray-300 rounded-lg pl-4 pr-16 mt-[0.5px]"
+                    className="w-full h-12 sm:h-14 bg-violet-50 border border-gray-300 rounded-lg sm:rounded-r-none pl-4 pr-4 sm:pr-2 text-sm sm:text-base"
                     required
                   />
                   <button
                     type="submit"
-                    className="absolute right-0 top-0 text-white font-semibold px-8 py-4 rounded-lg transition-all"
+                    className="w-full sm:w-auto text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-l-none transition-all mt-2 sm:mt-0 text-sm sm:text-base"
                     style={{
                       background:
                         "radial-gradient(ellipse 85.59% 107.08% at 86.30% 87.50%, rgba(0, 0, 0, 0.23) 0%, rgba(0, 0, 0, 0) 86%), radial-gradient(ellipse 83.94% 83.94% at 26.39% 20.83%, rgba(255, 255, 255, 0.41) 0%, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 0) 100%), #8073E0",
                       boxShadow: "3.39px 32.23px 52.58px rgba(0, 0, 0, 0.2)",
                       borderRadius: "10.44px",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      gap: "8.48px",
                     }}
                   >
                     Subscribe
@@ -134,16 +135,18 @@ export default function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-gray-200/60 mt-16 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-gray-500">Copyright @2025</p>
-            <div className="flex space-x-6">
+        <div className="border-t border-gray-200/60 mt-12 sm:mt-16 pt-6 sm:pt-8">
+          <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+            <p className="text-gray-500 text-sm sm:text-base text-center sm:text-left">
+              Copyright @2025
+            </p>
+            <div className="flex space-x-4 sm:space-x-6">
               <a
                 href="#"
                 className="text-gray-400 hover:text-gray-600 transition-colors"
               >
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4 sm:w-5 sm:h-5"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -155,7 +158,7 @@ export default function Footer() {
                 className="text-gray-400 hover:text-gray-600 transition-colors"
               >
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4 sm:w-5 sm:h-5"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -167,7 +170,7 @@ export default function Footer() {
                 className="text-gray-400 hover:text-gray-600 transition-colors"
               >
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4 sm:w-5 sm:h-5"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -179,7 +182,7 @@ export default function Footer() {
                 className="text-gray-400 hover:text-gray-600 transition-colors"
               >
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4 sm:w-5 sm:h-5"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >

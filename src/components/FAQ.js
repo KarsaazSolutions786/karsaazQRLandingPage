@@ -38,7 +38,13 @@ export default function FAQ() {
   };
 
   const PlusIcon = () => (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      className="sm:w-6 sm:h-6"
+    >
       <path
         d="M12 6V18M6 12H18"
         stroke="#666"
@@ -49,28 +55,34 @@ export default function FAQ() {
   );
 
   const MinusIcon = () => (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      className="sm:w-6 sm:h-6"
+    >
       <path d="M6 12H18" stroke="#666" strokeWidth="2" strokeLinecap="round" />
     </svg>
   );
 
   return (
-    <section id="faq" className="py-16 px-6 bg-white">
-      <div className="max-w-[1400px] mx-auto">
+    <section id="faq" className="py-12 sm:py-16 px-4 sm:px-6 bg-white">
+      <div className="max-w-5xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <h2 className="text-4xl font-normal text-purple-600 mb-4">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-purple-600 mb-4">
             Frequently Ask Questions
           </h2>
         </motion.div>
 
         {/* FAQ Grid */}
-        <div className="flex flex-wrap justify-center gap-6 items-start max-w-[1400px] mx-auto">
+        <div className="flex flex-col space-y-4 sm:space-y-6 max-w-4xl mx-auto">
           {faqs.map((faq, index) => (
             <motion.div
               key={faq.id}
@@ -78,20 +90,20 @@ export default function FAQ() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               layout={false}
-              className={`w-full sm:w-[644.93px] ${
+              className={`w-full ${
                 openIndex === index
-                  ? "h-auto min-h-56 bg-violet-50"
-                  : "h-24 bg-white"
-              } rounded-3xl shadow-[0px_4px_4px_0px_rgba(215,217,235,1.00)] shadow-[0px_-4px_11px_0px_rgba(241,241,243,1.00)] shadow-[inset_0px_1px_4px_0px_rgba(101,108,148,0.25)] shadow-[inset_0px_-2px_4px_0px_rgba(101,108,148,0.25)] overflow-hidden cursor-pointer transition-all duration-300 flex-shrink-0`}
+                  ? "min-h-[120px] sm:min-h-[140px] bg-violet-50"
+                  : "h-16 sm:h-20 lg:h-24 bg-white"
+              } rounded-2xl sm:rounded-3xl shadow-md border border-gray-100 overflow-hidden cursor-pointer transition-all duration-300 flex-shrink-0`}
               onClick={() => toggleFAQ(index)}
             >
-              <div className="p-6">
+              <div className="p-4 sm:p-6">
                 {/* Question Header */}
                 <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-semibold text-gray-800 pr-4 flex-1">
+                  <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-gray-800 pr-4 flex-1 leading-tight">
                     {faq.question}
                   </h3>
-                  <div className="flex-shrink-0">
+                  <div className="flex-shrink-0 ml-2">
                     {openIndex === index ? <MinusIcon /> : <PlusIcon />}
                   </div>
                 </div>
@@ -107,7 +119,7 @@ export default function FAQ() {
                       className="overflow-hidden"
                       layout={false}
                     >
-                      <div className="pt-4 text-gray-600 text-sm leading-relaxed">
+                      <div className="pt-3 sm:pt-4 text-gray-600 text-xs sm:text-sm leading-relaxed">
                         {faq.answer}
                       </div>
                     </motion.div>
