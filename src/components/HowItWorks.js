@@ -71,7 +71,7 @@ export default function HowItWorks() {
           </div>
 
           {/* Right Column: Phone Image */}
-          <div className="relative flex justify-center items-center h-[600px]">
+          <div className="relative flex justify-center items-center h-[600px] hidden md:flex">
             <div className="absolute inset-y-44 -inset-x-0 ">
               <Image
                 src="/img/HIW.png"

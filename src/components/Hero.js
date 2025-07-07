@@ -135,7 +135,7 @@ export default function Hero({ activeType, setActiveType }) {
             />
           </div>
           {/* Right Column */}
-          <div className="relative flex justify-center items-center">
+          <div className="relative flex justify-center items-center hidden md:flex">
             <Image
               src="/img/hero_1.png"
               alt="KarsaazQR in action"
@@ -150,9 +150,46 @@ export default function Hero({ activeType, setActiveType }) {
 
       {/* QR Types Carousel Section */}
       <div className="pb-1">
-        <div className="max-w-4xl mx-auto p-6 bg-white/70 backdrop-blur-md rounded-[102.49px] shadow-lg">
+        <div className="max-w-4xl mx-auto p-4 md:p-6 bg-white/70 backdrop-blur-md rounded-[50px] md:rounded-[102.49px] shadow-lg">
           <div className="relative">
-            <div className="flex items-center justify-between">
+            {/* Mobile: Grid layout for 2-3 items per row */}
+            <div className="md:hidden">
+              <div className="grid grid-cols-3 gap-3 md:gap-4">
+                {qrTypes.map((type) => (
+                  <div
+                    key={type.name}
+                    onClick={() => setActiveType(type.name)}
+                    className="flex flex-col items-center space-y-2 text-center cursor-pointer"
+                  >
+                    <div className="relative">
+                      {activeType === type.name && <ActiveBorder />}
+                      <div
+                        className={`w-16 h-16 md:w-20 md:h-20 flex items-center justify-center transition-opacity duration-300 bg-white rounded-2xl md:rounded-3xl shadow-[3.7074687480926514px_3.7074687480926514px_9.639418601989746px_0px_rgba(230,230,230,0.90)] shadow-[-3.7074687480926514px_-3.7074687480926514px_7.414937496185303px_0px_rgba(255,255,255,0.90)] shadow-[3.7074687480926514px_-3.7074687480926514px_7.414937496185303px_0px_rgba(230,230,230,0.20)] shadow-[-3.7074687480926514px_3.7074687480926514px_7.414937496185303px_0px_rgba(230,230,230,0.20)] shadow-[inset_-0.7414937615394592px_-0.7414937615394592px_1.4829875230789185px_0px_rgba(186,186,211,0.30)] shadow-[inset_0.7414937615394592px_0.7414937615394592px_1.4829875230789185px_0px_rgba(208,208,223,0.30)] ${
+                          activeType === type.name
+                            ? "opacity-100"
+                            : "opacity-40 border border-neutral-300"
+                        }`}
+                      >
+                        <Icon
+                          type={type.icon}
+                          isActive={activeType === type.name}
+                        />
+                      </div>
+                    </div>
+                    <p
+                      className={`text-xs font-medium transition-colors text-gray-700 ${
+                        activeType === type.name ? "text-purple-600" : ""
+                      }`}
+                    >
+                      {type.name}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Desktop: Horizontal slider with navigation */}
+            <div className="hidden md:flex items-center justify-between">
               <button className="rounded-full text-purple-600 hover:bg-purple-100/50 transition-colors">
                 <svg
                   className="w-10 h-10"

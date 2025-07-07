@@ -236,7 +236,7 @@ export default function InspirationFeed() {
   };
 
   return (
-    <section className="relative pt-24 pb-8 overflow-hidden bg-white">
+    <section className="relative pt-24 pb-8 overflow-hidden bg-white hidden md:block">
       {/* Centered Heading */}
       <div className="relative z-20">
         <div className="text-center mb-12">
