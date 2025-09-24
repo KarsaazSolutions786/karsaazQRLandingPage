@@ -49,14 +49,15 @@ export default function Pricing() {
 
   const plans = [
     {
-      name: "Primary Plan",
-      monthlyPrice: 12,
-      yearlyPrice: 120,
+      name: "Basic",
+      monthlyPrice: 9,
+      yearlyPrice: 90,
       features: [
-        "20,000 Visitors",
-        "Create Unlimited Widgets",
-        "CMS Integration",
-        "All Widget Types",
+        "50 QR Codes per month",
+        "Basic QR Code types",
+        "Standard templates",
+        "Basic analytics",
+        "Email support",
       ],
       isPopular: false,
       buttonStyle: {
@@ -68,16 +69,17 @@ export default function Pricing() {
       },
     },
     {
-      name: "Pro Plan",
-      monthlyPrice: 18,
-      yearlyPrice: 180,
+      name: "Standard",
+      monthlyPrice: 19,
+      yearlyPrice: 190,
       features: [
-        "20,000 Visitors",
-        "Create Unlimited Widgets",
-        "CMS Integration",
-        "All Widget Types",
-        "Integrations",
-        "Dedicated Manager",
+        "500 QR Codes per month",
+        "All QR Code types",
+        "Premium templates",
+        "Advanced analytics",
+        "Custom branding",
+        "Priority support",
+        "Bulk generation",
       ],
       isPopular: true,
       buttonStyle: {
@@ -90,15 +92,18 @@ export default function Pricing() {
       },
     },
     {
-      name: "Premium Plan",
-      monthlyPrice: 28,
-      yearlyPrice: 280,
+      name: "Premium",
+      monthlyPrice: 39,
+      yearlyPrice: 390,
       features: [
-        "50,000 Visitors",
-        "Create Unlimited Widgets",
-        "CMS Integration",
-        "All Widget Types",
-        "Integrations",
+        "Unlimited QR Codes",
+        "All QR Code types",
+        "Custom templates",
+        "Advanced analytics & insights",
+        "White-label solution",
+        "API access",
+        "Dedicated account manager",
+        "Custom integrations",
       ],
       isPopular: false,
       buttonStyle: {
@@ -140,7 +145,7 @@ export default function Pricing() {
                 WebkitTextFillColor: "transparent",
               }}
             >
-              Ready to get{" "}
+              Choose Your{" "}
             </span>
             <span
               className="bg-clip-text text-transparent"
@@ -151,11 +156,11 @@ export default function Pricing() {
                 WebkitTextFillColor: "transparent",
               }}
             >
-              started?
+              QR Plan
             </span>
           </h2>
           <p className="text-lg mb-8">
-            14 days unlimited free trial. No contract or credit card required.
+            Start with our free trial. Upgrade anytime to unlock more features.
           </p>
 
           {/* Monthly/Yearly Toggle */}

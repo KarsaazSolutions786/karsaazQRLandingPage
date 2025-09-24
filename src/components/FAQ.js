@@ -9,27 +9,27 @@ export default function FAQ() {
   const faqs = [
     {
       id: 1,
-      question: "How long until we deliver your first blog post?",
+      question: "What types of QR codes can I create with KarsaazQR?",
       answer:
-        "Really boy law county she unable her sister. Feet you off its like like six. Among sex are leave law built now. In built table in an rapid blush. Merits behind on afraid or warmly.",
+        "KarsaazQR supports multiple QR code types including PDF sharing, website links, mobile app downloads, event invitations, image galleries, audio content, discount coupons, and direct website access. Each type is optimized for its specific use case.",
     },
     {
       id: 2,
-      question: "How long until we deliver your first blog post?",
+      question: "How do I track the performance of my QR codes?",
       answer:
-        "We typically deliver your first blog post within 3-5 business days after receiving all necessary information and requirements from you.",
+        "Our platform provides comprehensive analytics including scan counts, geographic data, device types, and time-based insights. You can monitor performance in real-time through your dashboard and receive detailed reports.",
     },
     {
       id: 3,
-      question: "How long until we deliver your first blog post?",
+      question: "Can I customize the design of my QR codes?",
       answer:
-        "Our team works efficiently to ensure quick turnaround times while maintaining high quality standards for all deliverables.",
+        "Yes! KarsaazQR offers extensive customization options including colors, logos, frames, and patterns. You can match your brand identity while maintaining optimal scannability across all devices.",
     },
     {
       id: 4,
-      question: "How long until we deliver your first blog post?",
+      question: "Is there a limit to how many QR codes I can create?",
       answer:
-        "The delivery timeline depends on the complexity of your requirements, but we always aim to exceed your expectations.",
+        "It depends on your plan. Our Basic plan includes 50 QR codes per month, Standard offers 500 per month, and Premium provides unlimited QR code generation. All plans include our core features and analytics.",
     },
   ];
 
@@ -65,7 +65,7 @@ export default function FAQ() {
           className="text-center mb-12"
         >
           <h2 className="text-4xl font-normal text-purple-600 mb-4">
-            Frequently Ask Questions
+            Frequently Asked Questions
           </h2>
         </motion.div>
 
