@@ -79,10 +79,10 @@ export default function LogoQR() {
                 }}
                 className="flex items-center justify-center"
               >
-                <div className="p-2 md:p-6 rounded-2xl transition-all duration-300 bg-white/10 backdrop-blur-sm">
-                  <div className="w-[200px] h-[200px] md:w-[260px] md:h-[260px] relative">
+                <div className="p-2 md:p-6 rounded-2xl transition-all duration-300">
+                  <div className="w-[350px] h-[350px] md:w-[560px] md:h-[560px] relative">
                     <Image
-                      src="/img/qrMain.png"
+                      src="/img/trylogo/1.png"
                       alt="Main QR Code"
                       fill
                       className="object-contain rounded-lg drop-shadow-lg"

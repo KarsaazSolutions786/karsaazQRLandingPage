@@ -17,6 +17,101 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+  
+  /* Animation delay utilities */
+  .animation-delay-500 {
+    animation-delay: 0.5s;
+  }
+  
+  .animation-delay-1000 {
+    animation-delay: 1s;
+  }
+  
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  
+  /* QR showcase hover effects */
+  .qr-hover:hover {
+    transform: scale(1.05) !important;
+    transition: all 0.3s ease;
+  }
+  
+  /* Sequential fade-in animations for QR codes */
+  .animate-fade-in-1 {
+    animation: fadeInUp 0.8s ease-out 0.5s forwards;
+  }
+  
+  .animate-fade-in-2 {
+    animation: fadeInUp 0.8s ease-out 1s forwards;
+  }
+  
+  .animate-fade-in-3 {
+    animation: fadeInUp 0.8s ease-out 1.5s forwards;
+  }
+  
+  .animate-fade-in-4 {
+    animation: fadeInUp 0.8s ease-out 2s forwards;
+  }
+  
+  /* Content transition animations */
+  .animate-fade-slide-left {
+    animation: fadeSlideLeft 0.6s ease-out forwards;
+  }
+  
+  .animate-fade-slide-right {
+    animation: fadeSlideRight 0.6s ease-out 0.3s forwards;
+    opacity: 0;
+  }
+  
+  .animate-fade-slide-up {
+    animation: fadeSlideUp 0.6s ease-out forwards;
+  }
+}
+
+/* Keyframe animations */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeSlideLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeSlideRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Masonry Grid Styles */

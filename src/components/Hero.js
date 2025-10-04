@@ -134,23 +134,72 @@ export default function Hero({ activeType, setActiveType }) {
               className="object-contain"
             />
           </div>
-          {/* Right Column */}
-          <div className="relative flex justify-center items-center hidden md:flex">
-            <Image
-              src="/img/hero_1.png"
-              alt="KarsaazQR in action"
-              width={550}
-              height={550}
-              className="object-contain"
-              priority
-            />
+          {/* Right Column - QR Showcase */}
+          <div className="relative flex justify-center items-center hidden md:flex h-[550px] w-full">
+            {/* Container for scattered QR codes */}
+            <div className="relative w-full h-full">
+              {/* 4 - Fades in fourth */}
+              <div className="absolute top-8 left-25 transform -rotate-10 qr-hover transition-all duration-300 hover:rotate-6 hover:z-20 opacity-0 animate-fade-in-4">
+                <div className="rounded-2xl p-0 transition-shadow">
+                  <Image
+                    src="/img/qr-showcase/1.png"
+                    alt="WhatsApp QR Code"
+                    width={120}
+                    height={120}
+                    className="object-contain rounded-2xl "
+                  />
+                </div>
+              </div>
+
+              {/* 3 - Fades in third */}
+              <div className="absolute bottom-76 right-36 transform qr-hover transition-all duration-300 hover:rotate-6 hover:z-20 opacity-0 animate-fade-in-3">
+                <div className="rounded-2xl p-0 transition-shadow">
+                  <Image
+                    src="/img/qr-showcase/5.png"
+                    alt="Google QR Code"
+                    width={120}
+                    height={120}
+                    className="object-contain rounded-2xl "
+                  />
+                </div>
+              </div>
+
+              {/* 2 - Fades in second */}
+              <div className="absolute bottom-32 left-50 transform rotate-6 qr-hover transition-all duration-300 hover:rotate-2 hover:z-20 opacity-0 animate-fade-in-2">
+                <div className="rounded-2xl p-0 transition-shadow">
+                  <Image
+                    src="/img/qr-showcase/3.png"
+                    alt="Purple QR Code"
+                    width={180}
+                    height={180}
+                    className="object-contain rounded-2xl "
+                  />
+                </div>
+              </div>
+
+              {/* 1 - Fades in first */}
+              <div className="absolute top-60 right-100 transform  qr-hover transition-all duration-300 hover:-rotate-3 hover:z-20 opacity-0 animate-fade-in-1">
+                <div className="rounded-2xl p-0 transition-shadow">
+                  <Image
+                    src="/img/qr-showcase/2.png"
+                    alt="Colorful Google QR Code"
+                    width={160}
+                    height={160}
+                    className="object-contain rounded-2xl"
+                  />
+                </div>
+              </div>
+
+              {/* Subtle background glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-100/20 to-blue-100/20 rounded-3xl blur-3xl opacity-30"></div>
+            </div>
           </div>
         </div>
       </div>
 
       {/* QR Types Carousel Section */}
       <div className="pb-1">
-        <div className="max-w-4xl mx-auto p-4 md:p-6 bg-white/70 backdrop-blur-md rounded-[50px] md:rounded-[102.49px] shadow-lg">
+        <div className="max-w-4xl mx-auto p-4 md:p-6 bg-white/70 backdrop-blur-md rounded-[50px] md:rounded-[102.49px] shadow-lg mt-10">
           <div className="relative">
             {/* Mobile: Grid layout for 2-3 items per row */}
             <div className="md:hidden">
@@ -257,6 +306,11 @@ export default function Hero({ activeType, setActiveType }) {
             </div>
           </div>
         </div>
+
+        {/* Dynamic Content Section Based on Active Type */}
+        <div className="max-w-7xl mx-auto mt-8 px-4 sm:px-6 lg:px-8">
+          <QRTypeContent activeType={activeType} />
+        </div>
       </div>
     </>
   );
@@ -292,6 +346,211 @@ const Icon = ({ type, isActive }) => {
             : "brightness(0) saturate(100%)", // Pure black color for inactive icons
         }}
       />
+    </div>
+  );
+};
+
+const QRTypeContent = ({ activeType }) => {
+  const qrContent = {
+    PDF: {
+      title: "PDF",
+      subtitle: "PDF QR CODE",
+      description:
+        "Transform your documents into easily scannable PDF QR codes! With KarsaazQR, you can securely share important PDFs by embedding them into custom QR codes.",
+      details:
+        "Whether you're sharing brochures, eBooks, or official documents, our PDF QR codes ensure that users can access the file instantly, with one simple scan. Enhance your digital document sharing today!",
+      buttonText: "Generate QR code for PDF",
+      bgGradient: "from-red-400 to-orange-500",
+      image: "/img/card_imgs/1.png",
+    },
+    Link: {
+      title: "Link",
+      subtitle: "LINK QR CODE",
+      description:
+        "Convert any URL into a scannable QR code! Perfect for sharing websites, social media profiles, or any online content instantly.",
+      details:
+        "Drive traffic to your website, share your portfolio, or promote your social media with ease. Create professional QR codes that redirect users to any link you choose.",
+      buttonText: "Generate QR code for Link",
+      bgGradient: "from-blue-400 to-purple-500",
+      image: "/img/card_imgs/2.png",
+    },
+    Apps: {
+      title: "Apps",
+      subtitle: "APP QR CODE",
+      description:
+        "Promote your mobile applications with QR codes! Direct users straight to your app store listing for instant downloads.",
+      details:
+        "Whether it's iOS App Store or Google Play Store, make it easy for users to find and download your apps. Boost your app installation rates with custom QR codes.",
+      buttonText: "Generate QR code for Apps",
+      bgGradient: "from-green-400 to-blue-500",
+      image: "/img/card_imgs/3.png",
+    },
+    Event: {
+      title: "Event",
+      subtitle: "EVENT QR CODE",
+      description:
+        "Create QR codes for your events! Share event details, calendar invites, or registration links effortlessly.",
+      details:
+        "Perfect for conferences, workshops, parties, or any gathering. Let attendees quickly access event information, save dates to their calendar, or register instantly.",
+      buttonText: "Generate QR code for Event",
+      bgGradient: "from-purple-400 to-pink-500",
+      image: "/img/card_imgs/4.png",
+    },
+    Image: {
+      title: "Image",
+      subtitle: "IMAGE QR CODE",
+      description:
+        "Share images instantly with QR codes! Perfect for portfolios, galleries, or any visual content you want to share.",
+      details:
+        "Upload your images and create QR codes that lead directly to your visual content. Great for photographers, artists, or businesses showcasing products.",
+      buttonText: "Generate QR code for Image",
+      bgGradient: "from-pink-400 to-red-500",
+      image: "/img/card_imgs/5.png",
+    },
+    Audio: {
+      title: "Audio",
+      subtitle: "AUDIO QR CODE",
+      description:
+        "Share audio content through QR codes! Perfect for music, podcasts, voicemails, or audio instructions.",
+      details:
+        "Let users instantly access your audio content by scanning a QR code. Great for musicians, podcasters, or businesses providing audio guides.",
+      buttonText: "Generate QR code for Audio",
+      bgGradient: "from-yellow-400 to-orange-500",
+      image: "/img/card_imgs/6.png",
+    },
+    Coupon: {
+      title: "Coupon",
+      subtitle: "COUPON QR CODE",
+      description:
+        "Create digital coupons with QR codes! Offer discounts, deals, and promotions that customers can easily redeem.",
+      details:
+        "Boost your marketing campaigns with scannable coupons. Perfect for restaurants, retail stores, or any business offering promotions and discounts.",
+      buttonText: "Generate QR code for Coupon",
+      bgGradient: "from-green-400 to-teal-500",
+      image: "/img/card_imgs/7.png",
+    },
+    Website: {
+      title: "Website",
+      subtitle: "WEBSITE QR CODE",
+      description:
+        "Promote your website with professional QR codes! Make it easy for customers to visit your online presence.",
+      details:
+        "Drive traffic to your business website, landing pages, or online store. Perfect for business cards, flyers, or any marketing material.",
+      buttonText: "Generate QR code for Website",
+      bgGradient: "from-indigo-400 to-purple-500",
+      image: "/img/card_imgs/8.png",
+    },
+  };
+
+  const content = qrContent[activeType] || qrContent.PDF;
+
+  return (
+    <div key={activeType} className="transition-all duration-700 ease-in-out">
+      <div className="grid md:grid-cols-2 gap-8 items-center rounded-3xl p-8">
+        {/* Left Content */}
+        <div className="space-y-6 animate-fade-slide-left">
+          <div className="transform transition-all duration-500 delay-100">
+            <h2 className="text-4xl font-bold text-gray-800 mb-2 transform transition-all duration-500 delay-200">
+              {content.title}
+            </h2>
+            <p className="text-sm font-medium text-gray-500 tracking-wide uppercase transform transition-all duration-500 delay-300">
+              {content.subtitle}
+            </p>
+          </div>
+
+          <div className="space-y-4 transform transition-all duration-500 delay-400">
+            <div className="flex items-start space-x-3 transform transition-all duration-500 delay-500">
+              <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 transform transition-all duration-500 delay-600">
+                <svg
+                  className="w-4 h-4 text-white"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+              <p className="text-gray-600 text-lg leading-relaxed transform transition-all duration-500 delay-600">
+                {content.description}
+              </p>
+            </div>
+
+            <div className="flex items-start space-x-3 transform transition-all duration-500 delay-700">
+              <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 transform transition-all duration-500 delay-800">
+                <svg
+                  className="w-4 h-4 text-white"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+              <p className="text-gray-600 text-lg leading-relaxed transform transition-all duration-500 delay-800">
+                {content.details}
+              </p>
+            </div>
+          </div>
+
+          <div
+            style={{
+              minWidth: "200px",
+              width: "auto",
+              height: "60px",
+              paddingLeft: 20.1,
+              paddingRight: 20.1,
+              paddingTop: 22.05,
+              paddingBottom: 22.05,
+              background:
+                "radial-gradient(ellipse 85.59% 107.08% at 86.30% 87.50%, rgba(0, 0, 0, 0.23) 0%, rgba(0, 0, 0, 0) 86%), radial-gradient(ellipse 83.94% 83.94% at 26.39% 20.83%, rgba(255, 255, 255, 0.41) 0%, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 0) 100%), #8073E0",
+              boxShadow:
+                "3.3924050331115723px 32.227848052978516px 52.582279205322266px rgba(0, 0, 0, 0.20)",
+              borderRadius: 92.44,
+              justifyContent: "center",
+              alignItems: "center",
+              gap: 8.48,
+              display: "inline-flex",
+              cursor: "pointer",
+              transition: "all 0.3s ease",
+              whiteSpace: "nowrap",
+            }}
+            className="hover:scale-105 hover:shadow-2xl transform transition-all duration-500 delay-900 animate-fade-slide-up"
+          >
+            <div
+              style={{
+                color: "rgba(255, 255, 255, 0.90)",
+                fontSize: 16,
+                fontFamily: "Inter",
+                fontWeight: "500",
+                wordWrap: "break-word",
+                textShadow: "1px 1px 1px rgba(0, 0, 0, 0.25)",
+              }}
+            >
+              {content.buttonText}
+            </div>
+          </div>
+        </div>
+
+        {/* Right Image */}
+        <div className="relative flex items-center justify-center animate-fade-slide-right">
+          <div className="transform transition-all duration-700 hover:scale-105 delay-300">
+            <Image
+              src={content.image}
+              alt={`${content.title} QR Code Illustration`}
+              width={500}
+              height={400}
+              className="object-contain rounded-2xl shadow-2xl transition-all duration-700"
+              priority
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

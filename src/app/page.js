@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <main>
       <Hero activeType={activeType} setActiveType={setActiveType} />
-      <Features activeType={activeType} />
+      {/* <Features activeType={activeType} /> */}
       <HowItWorks />
       <InspirationFeed />
       <LogoQR />
