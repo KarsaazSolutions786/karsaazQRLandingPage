@@ -18,40 +18,19 @@ const inspirationalPhrases = [
   },
 ];
 
-// Different image sets for each tab
-const imagesByTab = {
-  0: [
-    // QR Code inspiration images
-    "bf1c3f211e7fd2d8ff5b3f06492adeb4ca91e314.jpg",
-    "bb1dee4a80f9ef1ef268290801b509c824018130.jpg",
-    "b3446b8a06d06c5ed14ea86199eca894b3c0c2db.jpg",
-    "885c0844ceaa11cf5dcea502c8af76894615f415.jpg",
-    "512a7cee82d1f41c5968eb88c978ba8cfa20afe4.jpg",
-    "55d8b2b252ec793e3bef3e16420e57e439704483.jpg",
-    "52b43bc2bb55a8a3f2f8b526baccdf42535799c7.jpg",
-  ],
-  1: [
-    // Creative designs images
-    "027be33894386c15f7d6cace168fde89bea0b033.jpg",
-    "08affdffa379722076d323bea296f7480ed0e683.jpg",
-    "6a0e48120f1060b1e8e467913d02c5701f4ffefa.jpg",
-    "3aaf305a7cbcbc98c3d7e7941c925885c467efd0.jpg",
-    "cf7e8124235cbd822362c66e16aaef4923a60970.jpg",
-    "eb83f21b2eb2f3909811729a8dfca5cbffa7bc97.jpg",
-  ],
-};
-
 const generateImages = (tabIndex, count = 24) => {
   // Create varied heights for masonry effect but with consistent width
   const heightVariations = [280, 320, 360, 240, 300, 340, 260, 380, 290, 330];
-  const tabImages = imagesByTab[tabIndex] || imagesByTab[0];
+
+  // Available images in the imageslidere folder (1.png to 20.png)
+  const availableImages = Array.from({ length: 20 }, (_, i) => `${i + 1}.png`);
 
   return Array.from({ length: count }, (_, i) => {
-    const imageIndex = i % tabImages.length;
+    const imageIndex = i % availableImages.length;
     const height = heightVariations[i % heightVariations.length];
 
     return {
-      src: `/img/imageslidere/${tabImages[imageIndex]}`,
+      src: `/img/imageslidere/${availableImages[imageIndex]}`,
       width: 236, // Consistent width for all images
       height: height, // Varied heights for masonry effect
       span: 1,
@@ -66,6 +45,7 @@ const ImageCard = ({ image, index, onImageLoad }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
   const cardRef = useRef(null);
 
   // IntersectionObserver for scroll-triggered animations
@@ -83,13 +63,14 @@ const ImageCard = ({ image, index, onImageLoad }) => {
       }
     );
 
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
+    const currentRef = cardRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (cardRef.current) {
-        observer.unobserve(cardRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -98,6 +79,17 @@ const ImageCard = ({ image, index, onImageLoad }) => {
     setImageLoaded(true);
     onImageLoad?.(index);
   }, [index, onImageLoad]);
+
+  const handleImageError = useCallback(() => {
+    setHasError(true);
+    setImageLoaded(true);
+    onImageLoad?.(index);
+  }, [index, onImageLoad]);
+
+  // Generate fallback image URL if there's an error
+  const fallbackSrc = `https://picsum.photos/236/${image.height}?random=${
+    index + 1000
+  }`;
 
   return (
     <motion.div
@@ -138,7 +130,7 @@ const ImageCard = ({ image, index, onImageLoad }) => {
         >
           {/* Lazy Loading with Next.js Image */}
           <Image
-            src={image.src}
+            src={hasError ? fallbackSrc : image.src}
             alt="QR Code inspiration image"
             width={236}
             height={image.height}
@@ -151,6 +143,7 @@ const ImageCard = ({ image, index, onImageLoad }) => {
             }}
             loading="lazy"
             onLoad={handleImageLoad}
+            onError={handleImageError}
             placeholder="blur"
             blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyLli1Tcdbb3LjmMacLvl+gHC6BGdTQLqzQ4GoUoU+DWKG5Qwb2xhNVfW4XhfI/kVfwuX"
           />
@@ -214,7 +207,7 @@ export default function InspirationFeed() {
       setImages(generateImages(phraseIndex));
       setLoadedImages(0);
     }
-  }, [phraseIndex]);
+  }, [phraseIndex, images.length]);
 
   const handleImageLoad = useCallback((index) => {
     setLoadedImages((prev) => prev + 1);

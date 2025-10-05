@@ -130,8 +130,11 @@ export default function Navbar() {
 
             {/* Login Button - Desktop Only */}
             <div className="hidden md:flex items-center">
-              <button 
-                onClick={() => window.location.href = 'https://frontend-production-7fbd4.up.railway.app/'}
+              <button
+                onClick={() =>
+                  (window.location.href =
+                    "https://frontend-production-7fbd4.up.railway.app/account/login")
+                }
                 className="flex items-center bg-white rounded-full shadow-md px-6 py-3 space-x-3 border border-gray-200 hover:shadow-lg transition-shadow"
               >
                 <div className="w-8 h-8 rounded-full overflow-hidden flex items-center justify-center bg-gray-100">
