@@ -10,6 +10,10 @@
 !.yarn/releases
 !.yarn/versions
 
+# lock files (to prevent cross-platform issues)
+package-lock.json
+yarn.lock
+
 # testing
 /coverage
 
