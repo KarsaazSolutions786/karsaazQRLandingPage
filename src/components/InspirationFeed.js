@@ -25,17 +25,49 @@ const generateImages = (tabIndex, count = 24) => {
   // Available images in the imageslidere folder (1.png to 20.png)
   const availableImages = Array.from({ length: 20 }, (_, i) => `${i + 1}.png`);
 
+  // Create a unique seed based on tabIndex and current time for true randomization
+  const seed = tabIndex * 1000 + (Date.now() % 10000);
+
+  // Create multiple shuffled copies to ensure variety
+  const shuffledImages = [...availableImages];
+
+  // Fisher-Yates shuffle algorithm with enhanced randomization
+  for (let i = shuffledImages.length - 1; i > 0; i--) {
+    // Use seed + index for better randomization
+    const randomValue = (seed + i) * 9301 + 49297;
+    const j = Math.floor(((Math.abs(randomValue) % 233280) / 233280) * (i + 1));
+    [shuffledImages[i], shuffledImages[j]] = [
+      shuffledImages[j],
+      shuffledImages[i],
+    ];
+  }
+
+  // Create another shuffle with Math.random for additional randomness
+  for (let i = shuffledImages.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledImages[i], shuffledImages[j]] = [
+      shuffledImages[j],
+      shuffledImages[i],
+    ];
+  }
+
   return Array.from({ length: count }, (_, i) => {
-    const imageIndex = i % availableImages.length;
-    const height = heightVariations[i % heightVariations.length];
+    // Use shuffled images and cycle through them
+    const imageIndex = i % shuffledImages.length;
+
+    // Randomize height selection with seed-based randomness
+    const heightSeed = seed + i * 7;
+    const randomHeightIndex =
+      Math.abs(heightSeed * 9301) % heightVariations.length;
+    const selectedHeight = heightVariations[randomHeightIndex];
 
     return {
-      src: `/img/imageslidere/${availableImages[imageIndex]}`,
+      src: `/img/imageslidere/${shuffledImages[imageIndex]}`,
       width: 236, // Consistent width for all images
-      height: height, // Varied heights for masonry effect
+      height: selectedHeight, // Randomized heights for masonry effect
       span: 1,
-      id: `img-${Date.now()}-${i}`,
-      rotation: Math.random() * 6 - 3, // Random rotation for Pinterest effect
+      id: `img-${seed}-${i}-${Math.random().toString(36).substr(2, 9)}`, // Highly unique ID
+      rotation: (Math.random() - 0.5) * 12, // Random rotation for Pinterest effect
     };
   });
 };
@@ -187,6 +219,7 @@ export default function InspirationFeed() {
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [images, setImages] = useState([]);
   const [loadedImages, setLoadedImages] = useState(0);
+  const [imageGenerationKey, setImageGenerationKey] = useState(0);
 
   useEffect(() => {
     // Pre-load initial images on mount
@@ -194,20 +227,28 @@ export default function InspirationFeed() {
     setLoadedImages(0);
 
     const interval = setInterval(() => {
-      setPhraseIndex(
-        (prevIndex) => (prevIndex + 1) % inspirationalPhrases.length
-      );
+      setPhraseIndex((prevIndex) => {
+        const newIndex = (prevIndex + 1) % inspirationalPhrases.length;
+        // Force image regeneration by updating key
+        setImageGenerationKey((prev) => prev + 1);
+        return newIndex;
+      });
     }, 4000);
     return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
-    // Generate new images when phraseIndex changes, but not on initial mount
-    if (images.length > 0) {
-      setImages(generateImages(phraseIndex));
-      setLoadedImages(0);
-    }
-  }, [phraseIndex, images.length]);
+    // Generate new images when phraseIndex changes or imageGenerationKey changes
+    const newImages = generateImages(phraseIndex + imageGenerationKey);
+    setImages(newImages);
+    setLoadedImages(0);
+    console.log(
+      "Generated new images for phrase:",
+      phraseIndex,
+      "with key:",
+      imageGenerationKey
+    );
+  }, [phraseIndex, imageGenerationKey]);
 
   const handleImageLoad = useCallback((index) => {
     setLoadedImages((prev) => prev + 1);
