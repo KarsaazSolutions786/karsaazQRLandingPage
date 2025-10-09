@@ -3,17 +3,17 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
+const navLinks = [
+  { name: "Home", href: "#home" },
+  { name: "How to", href: "#how-to" },
+  { name: "FAQ", href: "#faq" },
+  { name: "Pricing", href: "#pricing" },
+  { name: "Contact", href: "#contact" },
+];
+
 export default function Navbar() {
   const [activeLink, setActiveLink] = useState("Home");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "How to", href: "#how-to" },
-    { name: "FAQ", href: "#faq" },
-    { name: "Pricing", href: "#pricing" },
-    { name: "Contact", href: "#contact" },
-  ];
 
   // Handle smooth scrolling
   const handleNavClick = (e, href, name) => {
@@ -133,7 +133,7 @@ export default function Navbar() {
               <button
                 onClick={() =>
                   (window.location.href =
-                    "https://frontend-production-7fbd4.up.railway.app/account/login")
+                    "https://dashboard.karsaazqr.com/account/login")
                 }
                 className="flex items-center bg-white rounded-full shadow-md px-6 py-3 space-x-3 border border-gray-200 hover:shadow-lg transition-shadow"
               >

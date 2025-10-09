@@ -42,14 +42,13 @@ export default function LogoQR() {
               className="text-white text-center lg:text-left"
             >
               <h1 className="text-2xl md:text-3xl lg:text-2xl font-bold mb-4 md:mb-8 leading-relaxed">
-                Logo QR — Lorem Ipsum Lorem ipsum
+                Logo QR - Branded, Smart, Instantly Recognizable
                 <br />
-                Lorem ipsum !
               </h1>
 
               <p className="text-sm md:text-base lg:text-lg mb-6 md:mb-10 text-white/90 leading-relaxed max-w-md mx-auto lg:mx-0">
-                Turn your logo into a branded QR code with a unique dot pattern.
-                Smart, stylish, and instantly recognizable.
+                Turn your logo into a stylish QR with a unique dot pattern —
+                on-brand and scan-perfect.
               </p>
 
               <motion.button
