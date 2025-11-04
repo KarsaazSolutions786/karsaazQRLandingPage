@@ -54,6 +54,10 @@ export default function LogoQR() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() =>
+                  (window.location.href =
+                    "https://dashboard.karsaazqr.com/account/login")
+                }
                 className="bg-white text-purple-600 font-medium text-sm md:text-base px-6 md:px-8 py-2.5 md:py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 Try Logo QR

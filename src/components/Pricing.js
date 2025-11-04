@@ -249,6 +249,10 @@ export default function Pricing() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={() =>
+                    (window.location.href =
+                      "https://dashboard.karsaazqr.com/account/login")
+                  }
                   className="py-4 rounded-full font-semibold text-lg transition-all duration-300"
                   style={plan.isPopular ? whitePillStyle : pillButtonStyle}
                 >

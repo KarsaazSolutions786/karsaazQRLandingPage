@@ -18,6 +18,10 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+# Set environment variables for build
+ENV NEXT_PUBLIC_CLOUDFLARE_SITE_KEY="0x4AAAAAAB5d7Cj9uTJJmIxd"
+ENV CLOUDFLARE_SECRET_KEY="0x4AAAAAAB5d7K6it3XdIzpg-8d5XP9-Rr4"
+
 # Build the application
 RUN npm run build
 
@@ -33,6 +37,9 @@ RUN adduser --system --uid 1001 nextjs
 
 # Copy the built application
 COPY --from=builder /app/public ./public
+
+# Fix permissions for public assets
+RUN chown -R nextjs:nodejs ./public
 
 # Set the correct permission for prerender cache
 RUN mkdir .next

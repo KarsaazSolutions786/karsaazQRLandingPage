@@ -81,6 +81,10 @@ export default function Hero({ activeType, setActiveType }) {
             </p>
             <div className="mt-10">
               <div
+                onClick={() =>
+                  (window.location.href =
+                    "https://dashboard.karsaazqr.com/account/login")
+                }
                 style={{
                   width: "150px",
                   height: "50px",
@@ -97,6 +101,7 @@ export default function Hero({ activeType, setActiveType }) {
                   alignItems: "center",
                   gap: 8.48,
                   display: "inline-flex",
+                  cursor: "pointer",
                 }}
               >
                 <div
@@ -499,6 +504,10 @@ const QRTypeContent = ({ activeType }) => {
           </div>
 
           <div
+            onClick={() =>
+              (window.location.href =
+                "https://dashboard.karsaazqr.com/account/login")
+            }
             style={{
               minWidth: "200px",
               width: "auto",
