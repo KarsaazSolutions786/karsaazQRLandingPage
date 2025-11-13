@@ -20,7 +20,7 @@ export default function Hero({ activeType, setActiveType }) {
     { name: "Event", icon: "calendar" },
     { name: "Image", icon: "image" },
     { name: "Audio", icon: "audio" },
-    { name: "Coupon", icon: "coupon" },
+    // { name: "Coupon", icon: "coupon" },
     { name: "Website", icon: "website" },
   ];
 

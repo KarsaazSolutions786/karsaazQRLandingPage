@@ -153,7 +153,7 @@ const getFeaturesByType = (activeType) => {
     Event: 4,
     Image: 5,
     Audio: 6,
-    Coupon: 7,
+    // Coupon: 7,
     Website: 8,
   };
 

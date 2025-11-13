@@ -14,18 +14,18 @@ export default function Footer() {
       <div className="max-w-screen-2xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-8">
         {/* Brand / About */}
         <div className="lg:col-span-3 sm:pr-8 lg:pr-12 text-center sm:text-left">
-          <h2 className="text-2xl sm:text-[26px] font-bold mb-3 flex items-center justify-center sm:justify-start gap-2">
+          <div className=" font-bold mb-3 flex items-center justify-center sm:justify-start gap-2">
             <Link href="/" className="flex items-center">
               <Image
-                src="/img/logo.png"
+                src="/img/logo-white.png"
                 alt="KarsaazQR Logo"
-                width={24}
-                height={24}
-                className="h-6 w-auto"
+                width={200}
+                height={64}
+                className="h-16 w-auto"
+                priority
               />
             </Link>
-          </h2>
-
+          </div>
           <p className="font-['Poppins'] text-gray-300 text-[14px] sm:text-[15px] leading-relaxed">
             Your ultimate QR code solution for businesses. Create custom QR
             codes, track analytics, and manage your digital presence with
@@ -207,11 +207,11 @@ export default function Footer() {
       {/* Legal line */}
       <div className="text-center mt-10 sm:mt-12 text-[12px] sm:text-[13px] leading-relaxed px-2 text-gray-300">
         <p>
-          ©️ 2025 KARSAAZ EBS LTD (UK). All Rights Reserved. ICO Registration
+          © 2025 KARSAAZ EBS LTD (UK). All Rights Reserved. ICO Registration
           ZB891350 • ISO/IEC 27001 & 9001 Certified • GDPR & PECA 2025
           Compliant. KarsaazQR®️ is a registered trademark of Karsaaz EBS LTD,
           United Kingdom Intellectual Property Office (Trademark No.
-          UK00004198402).
+          UK00004233095).
         </p>
       </div>
     </footer>
