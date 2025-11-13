@@ -207,11 +207,11 @@ export default function Footer() {
       {/* Legal line */}
       <div className="text-center mt-10 sm:mt-12 text-[12px] sm:text-[13px] leading-relaxed px-2 text-gray-300">
         <p>
-          © 2025 KARSAAZ EBS LTD (UK). All Rights Reserved. ICO Registration
+          ©️ 2025 KARSAAZ EBS LTD (UK). All Rights Reserved. ICO Registration
           ZB891350 • ISO/IEC 27001 & 9001 Certified • GDPR & PECA 2025
           Compliant. KarsaazQR®️ is a registered trademark of Karsaaz EBS LTD,
           United Kingdom Intellectual Property Office (Trademark No.
-          UK00004233095).
+          UK00004198402).
         </p>
       </div>
     </footer>
