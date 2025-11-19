@@ -74,7 +74,7 @@ export default function Footer() {
                 { href: "#", label: "Home" },
                 { href: "/#features", label: "Features" },
                 { href: "/#faqs", label: "FAQs" },
-                { href: "/#pricing", label: "Pricing Plain" },
+                { href: "/#pricing", label: "Pricing Plan" },
               ].map((x) => (
                 <li key={x.href} className="text-[14px]">
                   <a
@@ -87,12 +87,11 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-        </div>
-
+        </div> 
         {/* Links + Social */}
         <div className="lg:col-span-3 flex flex-col items-center sm:items-start">
           <div className="w-full sm:w-max text-center sm:text-left">
-            <h3 className="font-semibold text-lg sm:text-xl mb-3">Links</h3>
+            {/* <h3 className="font-semibold text-lg sm:text-xl mb-3">Links</h3>
             <ul className="space-y-2 font-['Poppins'] text-gray-300 font-medium">
               <li>
                 <a
@@ -104,7 +103,7 @@ export default function Footer() {
                   IAF Certification Validation - IAF CertSearch
                 </a>
               </li>
-            </ul>
+            </ul> */}
 
             {/* Social */}
             <div className="mt-6">
@@ -168,7 +167,7 @@ export default function Footer() {
         </div>
 
         {/* Phone */}
-        <div className="lg:col-span-3 flex justify-center sm:justify-start lg:justify-end">
+        {/* <div className="lg:col-span-3 flex justify-center sm:justify-start lg:justify-end">
           <div className="sm:w-max text-center sm:text-left">
             <div className="flex items-start gap-2 text-gray-300 font-['Poppins'] text-[14px] leading-relaxed justify-center sm:justify-start">
               <Phone className="w-5 h-5 mt-0.5 flex-shrink-0" />
@@ -186,7 +185,7 @@ export default function Footer() {
               </a>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Email */}
         <div className="lg:col-span-3 flex justify-center sm:justify-start lg:justify-end">
@@ -207,11 +206,9 @@ export default function Footer() {
       {/* Legal line */}
       <div className="text-center mt-10 sm:mt-12 text-[12px] sm:text-[13px] leading-relaxed px-2 text-gray-300">
         <p>
-          ©️ 2025 KARSAAZ EBS LTD (UK). All Rights Reserved. ICO Registration
-          ZB891350 • ISO/IEC 27001 & 9001 Certified • GDPR & PECA 2025
-          Compliant. KarsaazQR®️ is a registered trademark of Karsaaz EBS LTD,
-          United Kingdom Intellectual Property Office (Trademark No.
-          UK00004198402).
+          © 2025 Karsaaz EBS | A Globally Certified & UK-Trademarked Technology
+          Group | Certified under International ISO & GDPR Standards | A Product
+          of Karsaaz EBS | www.karsaazebs.com
         </p>
       </div>
     </footer>

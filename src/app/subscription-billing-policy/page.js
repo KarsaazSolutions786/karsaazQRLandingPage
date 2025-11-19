@@ -254,7 +254,8 @@ export default function SubscriptionBillingPolicy() {
             </h2>
             <p>For billing questions or support, contact us at:</p>
             <p className="mt-4">
-              <strong>Email:</strong> info@karsaazQR.com
+              <strong>Email:</strong> info@karsaazqr.com or
+              billing@karsaazqr.com
               <br />
               <strong>Address:</strong> 85 Great Portland Street, First Floor,
               London, W1W 7LT, United Kingdom
@@ -263,13 +264,47 @@ export default function SubscriptionBillingPolicy() {
             </p>
           </section>
 
+          <section>
+            <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">
+              15. Currency and Exchange Rates
+            </h2>
+            <p>
+              Prices are displayed in GBP (British Pounds Sterling) unless
+              otherwise stated. If you pay in a different currency, the exchange
+              rate applied will be determined by your payment provider or credit
+              card company.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">
+              16. Payment Security
+            </h2>
+            <p>
+              All payment information is processed securely through our
+              third-party payment processors. We do not store your full credit
+              card details on our servers. All transactions are encrypted using
+              industry-standard SSL/TLS protocols.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">
+              17. Right to Modify Terms
+            </h2>
+            <p>
+              We reserve the right to modify this Subscription & Billing Policy
+              at any time. Material changes will be communicated to active
+              subscribers with reasonable advance notice. Continued use of the
+              service after changes constitutes acceptance of the updated
+              policy.
+            </p>
+          </section>
+
           <p className="text-sm text-gray-500 mt-12 pt-8 border-t">
-            Last updated:{" "}
-            {new Date().toLocaleDateString("en-GB", {
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-            })}
+            <strong>Document Version:</strong> 2.0
+            <br />
+            Last updated: 19 November 2025
           </p>
         </div>
       </div>

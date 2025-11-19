@@ -147,7 +147,8 @@ export default function RefundPolicy() {
               contact us at:
             </p>
             <p className="mt-4">
-              <strong>Email:</strong> info@karsaazQR.com
+              <strong>Email:</strong> info@karsaazqr.com or
+              refunds@karsaazqr.com
               <br />
               <strong>Address:</strong> 85 Great Portland Street, First Floor,
               London, W1W 7LT, United Kingdom
@@ -156,13 +157,34 @@ export default function RefundPolicy() {
             </p>
           </section>
 
+          <section>
+            <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">
+              11. Force Majeure
+            </h2>
+            <p>
+              In case of service interruption due to circumstances beyond our
+              control (natural disasters, war, pandemics, government actions,
+              etc.), we will work to restore service as quickly as possible and
+              may provide subscription extensions or credits as appropriate.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">
+              12. Consumer Rights
+            </h2>
+            <p>
+              Nothing in this policy affects your statutory rights as a consumer
+              under applicable consumer protection laws. If you are a consumer
+              in the UK or EU, you may have additional rights under local
+              consumer protection legislation.
+            </p>
+          </section>
+
           <p className="text-sm text-gray-500 mt-12 pt-8 border-t">
-            Last updated:{" "}
-            {new Date().toLocaleDateString("en-GB", {
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-            })}
+            <strong>Document Version:</strong> 2.0
+            <br />
+            Last updated: 19 November 2025
           </p>
         </div>
       </div>

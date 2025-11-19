@@ -187,7 +187,8 @@ export default function DisclaimerPolicy() {
               at:
             </p>
             <p className="mt-4">
-              <strong>Email:</strong> info@karsaazQR.com
+              <strong>Email:</strong> info@karsaazqr.com or
+              support@karsaazqr.com
               <br />
               <strong>Address:</strong> 85 Great Portland Street, First Floor,
               London, W1W 7LT, United Kingdom
@@ -196,13 +197,44 @@ export default function DisclaimerPolicy() {
             </p>
           </section>
 
+          <section>
+            <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">
+              13. Backup and Data Loss
+            </h2>
+            <p>
+              While we maintain regular backups, we are not responsible for any
+              data loss that may occur. We strongly recommend that you maintain
+              your own backups of important QR code data and content.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">
+              14. No Warranty
+            </h2>
+            <p>
+              The service is provided &quot;as is&quot; and &quot;as
+              available&quot; without any warranties of any kind, either express
+              or implied. We make no warranty that the service will be
+              uninterrupted, timely, secure, or error-free.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">
+              15. Updates to This Disclaimer
+            </h2>
+            <p>
+              We may update this Disclaimer from time to time. Changes will be
+              effective immediately upon posting. Your continued use of the
+              Service constitutes acceptance of any modifications.
+            </p>
+          </section>
+
           <p className="text-sm text-gray-500 mt-12 pt-8 border-t">
-            Last updated:{" "}
-            {new Date().toLocaleDateString("en-GB", {
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-            })}
+            <strong>Document Version:</strong> 2.0
+            <br />
+            Last updated: 19 November 2025
           </p>
         </div>
       </div>

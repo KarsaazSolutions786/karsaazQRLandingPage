@@ -178,6 +178,29 @@ export default function Navbar() {
                   {link.name}
                 </a>
               ))}
+
+              {/* Mobile Login Button */}
+              <button
+                onClick={() => {
+                  window.location.href =
+                    "https://dashboard.karsaazqr.com/account/login";
+                  setIsMobileMenuOpen(false);
+                }}
+                className="w-full flex items-center justify-center bg-purple-600 hover:bg-purple-700 text-white rounded-lg px-4 py-3 space-x-2 transition-colors duration-200 mt-2"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <span className="font-semibold text-base">Login</span>
+              </button>
             </div>
           </div>
         )}

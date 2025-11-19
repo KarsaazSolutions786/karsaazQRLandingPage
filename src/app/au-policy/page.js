@@ -206,7 +206,7 @@ export default function AcceptableUsePolicy() {
               at:
             </p>
             <p className="mt-4">
-              <strong>Email:</strong> info@karsaazQR.com
+              <strong>Email:</strong> info@karsaazqr.com or abuse@karsaazqr.com
               <br />
               <strong>Address:</strong> 85 Great Portland Street, First Floor,
               London, W1W 7LT, United Kingdom
@@ -215,13 +215,43 @@ export default function AcceptableUsePolicy() {
             </p>
           </section>
 
+          <section>
+            <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">
+              13. Right to Modify Service
+            </h2>
+            <p>
+              We reserve the right to modify, suspend, or discontinue any aspect
+              of the service at any time to enforce this policy or for any other
+              reason without prior notice.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">
+              14. No Liability for User Actions
+            </h2>
+            <p>
+              We are not responsible for content created by users or actions
+              taken by users of the service. Users are solely responsible for
+              their own conduct and content.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">
+              15. Cooperation with Authorities
+            </h2>
+            <p>
+              We will cooperate fully with law enforcement authorities and
+              comply with court orders regarding violations of this policy or
+              illegal activities.
+            </p>
+          </section>
+
           <p className="text-sm text-gray-500 mt-12 pt-8 border-t">
-            Last updated:{" "}
-            {new Date().toLocaleDateString("en-GB", {
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-            })}
+            <strong>Document Version:</strong> 2.0
+            <br />
+            Last updated: 19 November 2025
           </p>
         </div>
       </div>

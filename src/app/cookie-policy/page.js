@@ -174,22 +174,63 @@ export default function CookiePolicy() {
               at:
             </p>
             <p className="mt-4">
-              <strong>Email:</strong> info@karsaazQR.com
+              <strong>Email:</strong> info@karsaazqr.com or
+              privacy@karsaazqr.com
               <br />
               <strong>Address:</strong> 85 Great Portland Street, First Floor,
               London, W1W 7LT, United Kingdom
               <br />
               <strong>Phone:</strong> +44 7411 209240
+              <br />
+              <strong>ICO Registration Number:</strong> ZB891350
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">
+              10. Specific Cookie Details
+            </h2>
+            <p>Below are examples of cookies we may use:</p>
+            <ul className="list-disc pl-6 mt-4 space-y-2">
+              <li>
+                <strong>Session Cookies:</strong> Keep you logged in during your
+                browsing session
+              </li>
+              <li>
+                <strong>Authentication Cookies:</strong> Verify your identity
+                and account access
+              </li>
+              <li>
+                <strong>Preference Cookies:</strong> Remember your settings and
+                customizations
+              </li>
+              <li>
+                <strong>Analytics Cookies:</strong> Track usage patterns and
+                service improvements
+              </li>
+              <li>
+                <strong>Security Cookies:</strong> Detect fraudulent activity
+                and enhance security
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">
+              11. International Data Transfers
+            </h2>
+            <p>
+              Some cookies may result in data being transferred outside your
+              country of residence. We ensure appropriate safeguards are in
+              place for such transfers, in accordance with applicable data
+              protection laws.
             </p>
           </section>
 
           <p className="text-sm text-gray-500 mt-12 pt-8 border-t">
-            Last updated:{" "}
-            {new Date().toLocaleDateString("en-GB", {
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-            })}
+            <strong>Document Version:</strong> 2.0
+            <br />
+            Last updated: 19 November 2025
           </p>
         </div>
       </div>
