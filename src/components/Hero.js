@@ -19,7 +19,7 @@ export default function Hero({ activeType, setActiveType }) {
     { name: "Apps", icon: "mobile" },
     { name: "Event", icon: "calendar" },
     { name: "Image", icon: "image" },
-    { name: "Audio", icon: "audio" },
+    // { name: "Audio", icon: "audio" },
     // { name: "Coupon", icon: "coupon" },
     { name: "Website", icon: "website" },
   ];
@@ -162,8 +162,8 @@ export default function Hero({ activeType, setActiveType }) {
                   <Image
                     src="/img/qr-showcase/5.png"
                     alt="Google QR Code"
-                    width={120}
-                    height={120}
+                    width={160}
+                    height={160}
                     className="object-contain rounded-2xl "
                   />
                 </div>

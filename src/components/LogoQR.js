@@ -60,7 +60,7 @@ export default function LogoQR() {
                 }
                 className="bg-white text-purple-600 font-medium text-sm md:text-base px-6 md:px-8 py-2.5 md:py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                Try Logo QR
+                Try Karsaaz QR
               </motion.button>
             </motion.div>
 
